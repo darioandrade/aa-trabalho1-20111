@@ -1,21 +1,25 @@
-CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
+CXXFLAGS = -O2 -g -Wall -fmessage-length=0
 
-OBJS =	graphgen.o
+OBJS = graphgen.o
 
-LIBS =
+LIBS = AdjacencyList.o GeraGrafo.o
 
-TARGET-GRAPHGEN =	graphgen
+TARGET-GRAPHGEN = graphgen
 
-TARGET-VECTOR =	vector
+TARGET-VECTOR = vector
 
-TARGET-HEAP =	heap
+TARGET-HEAP = heap
 
-TARGET-LISTSET =	listset
+TARGET-LISTSET = listset
 
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-all:	$(TARGET-GRAPHGEN) $(TARGET-VECTOR) $(TARGET-HEAP) $(TARGET-LISTSET)
+%.cpp: %.h
 
-$(TARGET-GRAPHGEN):	$(OBJS)
+all: $(TARGET-GRAPHGEN) $(TARGET-VECTOR) $(TARGET-HEAP) $(TARGET-LISTSET)
+
+$(TARGET-GRAPHGEN): $(OBJS) $(LIBS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET-GRAPHGEN) $(TARGET-GRAPHGEN).o $(LIBS)
 
 clean:
