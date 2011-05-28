@@ -1,0 +1,22 @@
+CXXFLAGS =	-O2 -g -Wall -fmessage-length=0
+
+OBJS =	graphgen.o
+
+LIBS =
+
+TARGET-GRAPHGEN =	graphgen
+
+TARGET-VECTOR =	vector
+
+TARGET-HEAP =	heap
+
+TARGET-LISTSET =	listset
+
+
+all:	$(TARGET-GRAPHGEN) $(TARGET-VECTOR) $(TARGET-HEAP) $(TARGET-LISTSET)
+
+$(TARGET-GRAPHGEN):	$(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET-GRAPHGEN) $(TARGET-GRAPHGEN).o $(LIBS)
+
+clean:
+	rm -f *.o $(TARGET-GRAPHGEN) $(TARGET-VECTOR) $(TARGET-HEAP) $(TARGET-LISTSET)
