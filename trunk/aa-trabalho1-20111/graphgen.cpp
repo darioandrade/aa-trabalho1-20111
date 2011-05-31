@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -10,7 +9,8 @@
 
 void imprimeErro ( char* exename )
 {
-    printf( "Gerador de grafos. Uso: %s nvertex tipo[0|1]\n", exename );
+    printf( "Gerador de grafos. Uso: %s [nvertex tipo(0|1) [debuglevel(0-2)]]\n", exename );
+    printf( "Se chamado sem parametros, gera 20 sequencias, 10 de cada tipo.\n", exename );
     printf( "Tipo 0: p = 0.2\n" );
     printf( "Tipo 1: p = 1 / ( 2 * ( n ^ 0.5 ) )\n" );
 }
