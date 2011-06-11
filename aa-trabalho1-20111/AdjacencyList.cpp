@@ -77,7 +77,9 @@ void AdjacencyList::read( FILE * f, int debug )
 
     static char sLine[ MAX_LINE_SIZE ];
 
-    fscanf( f, " %d ", &m_nVertex );
+    fgets( sLine, MAX_LINE_SIZE, f );
+
+    m_nVertex = atoi( sLine );
 
     Allocate( m_nVertex );
 

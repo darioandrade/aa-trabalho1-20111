@@ -10,14 +10,14 @@
 #include "AlgoritmoCoberturaGulosa.h"
 #include "DegreeVectorAdjacencyList.h"
 
-void Tarefa_3( int debug )
+void Tarefa_3( char sFilename[ ], int debug )
 {
     DegreeVectorAdjacencyList grafo3;
 
     fprintf( stderr, "Lendo grafo %s:\n",
-             "grafo_p1_01.grafo" );
+             sFilename );
 
-    FILE * f = fopen( "grafo_p1_10.grafo", "r" );
+    FILE * f = fopen( sFilename, "r" );
 
     grafo3.read( f , debug );
 
@@ -47,18 +47,20 @@ void Tarefa_3( int debug )
 
 int main(int argc, char ** argv)
 {
-    if ( argc <= 1 )
+    if ( argc <= 2 )
     {
-        fprintf( stderr, "Cobertura. Uso: %s [3|4|5]\n", argv[ 0 ] );
+        fprintf( stderr, "Cobertura. Uso: %s filename ([3|4|5]) [debug]\n", argv[ 0 ] );
         exit( 1 );
     }
 
-    int tarefa = atoi( argv[ 1 ] );
+    int tarefa = atoi( argv[ 2 ] );
+
+    int debug = argc > 3 ? atoi( argv[ 3 ] ) : 1;
 
     switch ( tarefa )
     {
         case 3:
-            Tarefa_3( 1 );
+            Tarefa_3( argv[ 1 ], debug );
             break;
     }
 
