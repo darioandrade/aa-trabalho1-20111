@@ -16,10 +16,16 @@ public:
     DegreeVectorAdjacencyList ( );
     virtual ~DegreeVectorAdjacencyList ( );
 
-    void addEdge( int iVertex, int jVertex, bool bUpdateNeighbor = true );
+    void addEdge( int iVertex, int jVertex, bool bUpdateNeighbor = true, bool bIncEdge = true );
 
 protected:
     void Allocate( int nVertex );
+
+    void DecrementDegree( int iVertex );
+    void SetDegree( int iVertex, int degree );
+    int GetDegree( int iVertex ) const;
+
+    int GetHighestDegreeVertex( ) const;
 
 private:
     int         * m_vectorDegrees;
