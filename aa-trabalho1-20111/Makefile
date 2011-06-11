@@ -1,8 +1,11 @@
 CXXFLAGS = -O2 -g -Wall -fmessage-length=0
 
-OBJS = graphgen.o
+OBJS_GRAPHGEN = graphgen.o
+OBJS_READWRITE = readwritetest.o
 
-LIBS = AdjacencyList.o GeraGrafo.o
+LIBS = DegreeVectorAdjacencyList.o AdjacencyList.o GeraGrafo.o
+
+TARGET-READWRITE = readwritetest
 
 TARGET-GRAPHGEN = graphgen
 
@@ -19,8 +22,11 @@ TARGET-LISTSET = listset
 
 all: $(TARGET-GRAPHGEN) $(TARGET-VECTOR) $(TARGET-HEAP) $(TARGET-LISTSET)
 
-$(TARGET-GRAPHGEN): $(OBJS) $(LIBS)
+$(TARGET-GRAPHGEN): $(OBJS_GRAPHGEN) $(LIBS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET-GRAPHGEN) $(TARGET-GRAPHGEN).o $(LIBS)
 
+$(TARGET-READWRITE): $(OBJS_READWRITE) $(LIBS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET-READWRITE) $(TARGET-READWRITE).o $(LIBS)
+
 clean:
-	rm -f *.o $(TARGET-GRAPHGEN) $(TARGET-VECTOR) $(TARGET-HEAP) $(TARGET-LISTSET)
+	rm -f *.o $(TARGET-GRAPHGEN) $(TARGET-VECTOR) $(TARGET-HEAP) $(TARGET-LISTSET) $(TARGET-READWRITE)
