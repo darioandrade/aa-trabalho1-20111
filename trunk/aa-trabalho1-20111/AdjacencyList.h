@@ -18,9 +18,13 @@ public:
 	AdjacencyList( int nVertex );
 	virtual ~AdjacencyList( );
 
-	virtual void addEdge( int iVertex, int jVertex );
+	virtual void addEdge( int iVertex, int jVertex, bool bUpdateNeighbor = true );
 	void write( FILE * f = NULL );
 	void read( FILE * f = NULL, int debug = 0 );
+
+protected:
+    AdjacencyList( );
+	virtual void Allocate( int nVertex );
 
 private:
 

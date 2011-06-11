@@ -22,7 +22,7 @@ int main( int argc, char ** argv )
 
     f = fopen( FILENAME_GRAFO, "r" );
 
-    DegreeVectorAdjacencyList grafo( NVERTEX );
+    DegreeVectorAdjacencyList grafo;
 
     fprintf( stderr, "lendo arquivo do grafo gerado: %s\n", FILENAME_GRAFO );
 

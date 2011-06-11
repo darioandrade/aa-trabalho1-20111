@@ -28,7 +28,7 @@ int main ( int argc, char ** argv )
             {
                 char path[ 256 ];
 
-                sprintf( path, "grafo_p%d_%02d", c, i );
+                sprintf( path, "grafo_p%d_%02d.grafo", c, i );
 
                 FILE * f = fopen( path , "w" );
 

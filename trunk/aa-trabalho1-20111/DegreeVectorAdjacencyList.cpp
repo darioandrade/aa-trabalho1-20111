@@ -7,9 +7,19 @@
 
 #include "DegreeVectorAdjacencyList.h"
 
-DegreeVectorAdjacencyList::DegreeVectorAdjacencyList ( int nVertex )
-    : AdjacencyList( nVertex )
+DegreeVectorAdjacencyList::DegreeVectorAdjacencyList (  )
 {
+}
+
+DegreeVectorAdjacencyList::~DegreeVectorAdjacencyList ( )
+{
+    delete [ ] m_vectorDegrees;
+}
+
+void DegreeVectorAdjacencyList::Allocate( int nVertex )
+{
+    AdjacencyList::Allocate( nVertex );
+
     m_vectorDegrees = new int [ nVertex ];
 
     for ( int i = 0; i < nVertex; i++ )
@@ -18,16 +28,15 @@ DegreeVectorAdjacencyList::DegreeVectorAdjacencyList ( int nVertex )
     }
 }
 
-DegreeVectorAdjacencyList::~DegreeVectorAdjacencyList ( )
+void DegreeVectorAdjacencyList::addEdge ( int iVertex, int jVertex, bool bUpdateNeighbor )
 {
-    delete [ ] m_vectorDegrees;
-}
-
-void DegreeVectorAdjacencyList::addEdge ( int iVertex, int jVertex )
-{
-    AdjacencyList::addEdge( iVertex, jVertex );
+    AdjacencyList::addEdge( iVertex, jVertex, bUpdateNeighbor );
 
     m_vectorDegrees[ iVertex ] ++;
-    m_vectorDegrees[ jVertex ] ++;
+
+    if ( bUpdateNeighbor )
+    {
+        m_vectorDegrees[ jVertex ] ++;
+    }
 }
 

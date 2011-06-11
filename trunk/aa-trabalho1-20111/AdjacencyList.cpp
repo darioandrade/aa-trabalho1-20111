@@ -9,11 +9,15 @@
 
 #define MAX_LINE_SIZE ( 64 * 1024 )
 
+AdjacencyList::AdjacencyList ( ) : m_nVertex( 0 )
+{
+}
+
 AdjacencyList::AdjacencyList ( int nVertex )
 {
-    m_nVertex = nVertex;
+    Allocate( nVertex );
 
-    m_arrAdjLists = new std::list< int >[ nVertex ];
+    m_nVertex = nVertex;
 }
 
 AdjacencyList::~AdjacencyList ( )
@@ -21,10 +25,19 @@ AdjacencyList::~AdjacencyList ( )
     delete [ ] m_arrAdjLists;
 }
 
-void AdjacencyList::addEdge ( int iVertex, int jVertex )
+void AdjacencyList::Allocate( int nVertex )
+{
+    m_arrAdjLists = new std::list< int >[ nVertex ];
+}
+
+void AdjacencyList::addEdge ( int iVertex, int jVertex, bool bUpdateNeighbor )
 {
     m_arrAdjLists[ iVertex ].push_back( jVertex );
-    m_arrAdjLists[ jVertex ].push_back( iVertex );
+
+    if ( bUpdateNeighbor )
+    {
+        m_arrAdjLists[ jVertex ].push_back( iVertex );
+    }
 }
 
 // print edges, one vertex each line, to stdout
@@ -34,6 +47,8 @@ void AdjacencyList::write ( FILE * f )
     {
         f = stdout;
     }
+
+    fprintf( f, "%d\n", m_nVertex );
 
     // run all vertex
     for ( int i = 0; i < m_nVertex; i++ )
@@ -57,6 +72,10 @@ void AdjacencyList::read( FILE * f, int debug )
 
     static char sLine[ MAX_LINE_SIZE ];
 
+    fscanf( f, " %d ", &m_nVertex );
+
+    Allocate( m_nVertex );
+
     // read all lines
     for ( int nCurrentVertex = 0;
             fgets( sLine, MAX_LINE_SIZE, f ) != NULL;
@@ -64,10 +83,8 @@ void AdjacencyList::read( FILE * f, int debug )
     {
         if ( debug >= 2 )
         {
-            fprintf( stderr, "  lendo linha do vertice %d\n", nCurrentVertex );
+            fprintf( stderr, "\n  lendo linha do vertice %d:\n", nCurrentVertex );
         }
-
-        m_nVertex ++;
 
         int offset = 0;
 
@@ -90,14 +107,18 @@ void AdjacencyList::read( FILE * f, int debug )
                         fprintf( stderr, " %d ", nNeighborVertex );
                     }
 
-                    addEdge( nCurrentVertex, nNeighborVertex );
+                    addEdge( nCurrentVertex, nNeighborVertex, false );
 
                     // find next item in line
                     while ( offset < MAX_LINE_SIZE
-                            && sLine[ offset ]
-                            && sLine[ offset ] != ' ' )
+                            && sLine[ offset ] )
                     {
                         offset ++;
+
+                        if ( sLine[ offset ] == ' ' )
+                        {
+                            break;
+                        }
                     }
                 }
                 else
