@@ -10,13 +10,16 @@
 
 #include "AdjacencyList.h"
 
-class DegreeVectorAdjacencyList : public virtual AdjacencyList
+class DegreeVectorAdjacencyList : public AdjacencyList
 {
 public:
-    DegreeVectorAdjacencyList ( int nVertex );
+    DegreeVectorAdjacencyList ( );
     virtual ~DegreeVectorAdjacencyList ( );
 
-    void addEdge( int iVertex, int jVertex );
+    void addEdge( int iVertex, int jVertex, bool bUpdateNeighbor = true );
+
+protected:
+    void Allocate( int nVertex );
 
 private:
     int         * m_vectorDegrees;
