@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <math.h>
+#include <ctime>
 
 #include "AdjacencyList.h"
 

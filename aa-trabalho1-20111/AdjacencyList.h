@@ -8,6 +8,7 @@
 #ifndef ADJACENCYLIST_H_
 #define ADJACENCYLIST_H_
 
+#include <stdio.h>
 #include <list>
 
 class AdjacencyList {
