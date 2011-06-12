@@ -23,22 +23,16 @@ public:
 	void read( FILE * f = NULL, int debug = 0 );
 
 	virtual bool HasEdge( ) const;
-    int RemoveHighestDegreeVertex( int debug );
+        virtual int RemoveHighestDegreeVertex( int debug ) { }
 
-    int GetSize() const { return m_nVertex; }
+        int GetSize() const { return m_nVertex; }
 
 
 protected:
     AdjacencyList( );
 	virtual void Allocate( int nVertex );
-
-    virtual void DecrementDegree( int iVertex ) { }
-    virtual void SetDegree( int iVertex, int degree ) { }
-    virtual int GetDegree( int iVertex ) const { return 0; }
-    virtual int GetHighestDegreeVertex( ) const { return -1; }
-
-private:
-
+        virtual void updateData(){ }
+        
 	int						m_nVertex;
 	std::set< int >		    * m_arrAdjLists;
 
