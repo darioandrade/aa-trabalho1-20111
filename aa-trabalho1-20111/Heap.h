@@ -7,12 +7,14 @@
 class Heap 
 {
 public:
-	Heap(int nVertex);
+	Heap( int nVertex );
 	~Heap();
 
 	void insertOnHeap(int iVertex, int degree);
 	bool removeFromHeap(std::pair<int, int> & highestPair);
 
+        void DecrementDegree( int iVertex );      
+        
 	void print();
 private:
 	void allocate();

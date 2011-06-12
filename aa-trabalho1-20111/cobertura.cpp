@@ -10,6 +10,7 @@
 #include "AlgoritmoCoberturaGulosa.h"
 #include "DegreeVectorAdjacencyList.h"
 #include "VertexVectorAdjacencyList.h"
+#include "DegreeHeapAdjacencyList.h"
 
 void Tarefa_3( char sFilename[ ], int debug )
 {
@@ -46,10 +47,10 @@ void Tarefa_3( char sFilename[ ], int debug )
     fprintf( stderr, "\n" );
 }
 
-void Tarefa_5( char sFilename[ ], int debug )
+
+void Tarefa_4( char sFilename[ ], int debug )
 {    
-     //VertexVectorAdjacencyList grafo4;
-	VertexVectorAdjacencyList grafo4;
+     DegreeHeapAdjacencyList grafo4;
 
     fprintf( stderr, "Lendo grafo %s:\n",
              sFilename );
@@ -81,6 +82,44 @@ void Tarefa_5( char sFilename[ ], int debug )
 
     fprintf( stderr, "\n" );
 }
+
+
+void Tarefa_5( char sFilename[ ], int debug )
+{    
+     VertexVectorAdjacencyList grafo5;
+
+    fprintf( stderr, "Lendo grafo %s:\n",
+             sFilename );
+
+    FILE * f = fopen( sFilename, "r" );
+
+    grafo5.read( f , debug );
+
+    fclose( f );
+
+    AlgoritmoCoberturaGulosa guloso;
+
+    std::list< int > listaDaCobertura;
+
+    fprintf( stderr, "Calculando cobertura para o grafo com %d vertices\n", grafo5.GetSize( ) );
+
+    guloso.CalculateCobertura( listaDaCobertura, grafo5, debug );
+
+    fprintf( stderr, "Cobertura para o grafo (nvertex: %d) tem %d vertices:\n",
+             grafo5.GetSize( ),
+             ( int ) listaDaCobertura.size( ) );
+
+    for ( std::list< int >::iterator it = listaDaCobertura.begin( );
+            it != listaDaCobertura.end( );
+            it ++ )
+    {
+        fprintf( stdout, "%d ", * it );
+    }
+
+    fprintf( stderr, "\n" );
+}
+
+
 int main(int argc, char ** argv)
 {
     if ( argc <= 2 )
@@ -97,6 +136,10 @@ int main(int argc, char ** argv)
     {
         case 3:
             Tarefa_3( argv[ 1 ], debug );
+            break;
+            
+        case 4:
+            Tarefa_4( argv[ 1 ], debug );
             break;
             
         case 5:

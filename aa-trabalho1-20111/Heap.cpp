@@ -52,6 +52,12 @@ void Heap::insertOnHeap(int iVertex, int degree)
 }
 
 
+void Heap::DecrementDegree( int iVertex )
+{
+    
+}
+
+
 void Heap::bubleUpElement(int iSlotIndex)
 {
 	// First element don't have father
