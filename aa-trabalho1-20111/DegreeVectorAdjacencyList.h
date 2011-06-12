@@ -17,6 +17,7 @@ public:
     virtual ~DegreeVectorAdjacencyList ( );
 
     void addEdge( int iVertex, int jVertex, bool bUpdateNeighbor = true, bool bIncEdge = true );
+    int RemoveHighestDegreeVertex( int debug );
 
 protected:
     void Allocate( int nVertex );
