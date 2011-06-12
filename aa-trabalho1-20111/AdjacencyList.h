@@ -23,9 +23,11 @@ public:
 	void read( FILE * f = NULL, int debug = 0 );
 
 	virtual bool HasEdge( ) const;
-        virtual int RemoveHighestDegreeVertex( int debug ) { }
+    virtual int RemoveHighestDegreeVertex( int debug ) { return -1; }
 
         int GetSize() const { return m_nVertex; }
+
+		int GetDegree(int iVertex) { return (int)m_arrAdjLists[iVertex].size(); }
 
 
 protected:

@@ -7,8 +7,8 @@
 class VertexVectorAdjacencyList : public AdjacencyList
 {
 public:
-    VertexVectorAdjacencyList ( );
-    virtual ~VertexVectorAdjacencyList ( );
+    VertexVectorAdjacencyList();
+    virtual ~VertexVectorAdjacencyList();
 
     int RemoveHighestDegreeVertex( int debug );
 
