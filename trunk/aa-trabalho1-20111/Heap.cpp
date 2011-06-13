@@ -1,3 +1,5 @@
+#include <math.h>
+
 #include "Heap.h"
 
 Heap::Heap(int nVertex)
@@ -17,6 +19,7 @@ Heap::~Heap()
 void Heap::allocate()
 {
 	m_heapVector = new std::pair<int, int>[ m_nVertex ];
+	m_indexerHeap = new int[ m_nVertex ];
 }
 
  bool Heap::removeFromHeap(std::pair<int, int> & root)
@@ -45,12 +48,12 @@ void Heap::allocate()
 
 void Heap::insertOnHeap(int iVertex, int degree)
 {	
-    // element ja esta alocado no heapvector, eh so setar as propriedades do pair
-	//std::pair<int, int> * element = new std::pair<int, int>(iVertex, degree);
-
-	//m_heapVector[m_nextAvailableSlot] = *element;
     m_heapVector[m_nextAvailableSlot].first = iVertex;
     m_heapVector[m_nextAvailableSlot].second = degree;
+
+	// Fill indexer vector
+	m_indexerHeap[iVertex] =  m_nextAvailableSlot;
+
 	m_nextAvailableSlot++;
 
 	bubleUpElement(m_nextAvailableSlot - 1);
@@ -59,19 +62,9 @@ void Heap::insertOnHeap(int iVertex, int degree)
 
 void Heap::DecrementDegree( int iVertex )
 {
-	int i = 0;
-	for(; i < m_nVertex; i++) {
-		// Search iVertex
-		if (m_heapVector[i].first == iVertex) {
-			// Decrement degree
-			m_heapVector[i].second--;
-			break;
-		}
-	}
-	
-	bubleDownElement(i);
+	m_heapVector[ m_indexerHeap[iVertex] ].second--;
+	bubleDownElement(m_indexerHeap[iVertex]);
 }
-
 
 void Heap::bubleUpElement(int iSlotIndex)
 {
@@ -89,15 +82,20 @@ void Heap::bubleUpElement(int iSlotIndex)
 
 bool Heap::swapWithFather(int iSlotIndex)
 {
+	std::pair<int, int> element = m_heapVector[iSlotIndex];
+
 	// Compare with parent
-	if (m_heapVector[iSlotIndex].second > m_heapVector[(iSlotIndex - 1) / 2].second) {
+	if (element.second > m_heapVector[(iSlotIndex - 1) / 2].second) {
 
 		// swap with father
 		std::pair<int, int> father = m_heapVector[(iSlotIndex - 1) / 2];
 
-		m_heapVector[(iSlotIndex - 1) / 2] = m_heapVector[iSlotIndex];
+		m_heapVector[(iSlotIndex - 1) / 2] = element;
 		m_heapVector[iSlotIndex] = father;
 
+		m_indexerHeap[ element.first ] = (iSlotIndex - 1) / 2;
+		m_indexerHeap[ father.first ] = iSlotIndex;
+		
 		return true;
 	}
 
@@ -145,9 +143,13 @@ int Heap::swapWithChildren(int iSlotIndex)
 		if (higher != -1) {
 			// swap with child
 			std::pair<int, int> child = m_heapVector[higher];
+			std::pair<int, int> element = m_heapVector[iSlotIndex];
 
 			m_heapVector[higher] = m_heapVector[iSlotIndex];
 			m_heapVector[iSlotIndex] = child;
+
+			m_indexerHeap[ element.first ] = higher;
+			m_indexerHeap[ child.first ] = iSlotIndex;
 
 			// 1 indicates that we swapped with left child
 			return result;
@@ -157,12 +159,15 @@ int Heap::swapWithChildren(int iSlotIndex)
 	if (leftChildIndex < m_nextAvailableSlot) {
 		// Compare with left child
 		if (m_heapVector[iSlotIndex].second < m_heapVector[leftChildIndex].second) {
-
+			std::pair<int, int> element = m_heapVector[iSlotIndex];
 			// swap with child
 			std::pair<int, int> child = m_heapVector[leftChildIndex];
 
 			m_heapVector[leftChildIndex] = m_heapVector[iSlotIndex];
 			m_heapVector[iSlotIndex] = child;
+
+			m_indexerHeap[ element.first ] = leftChildIndex;
+			m_indexerHeap[ child.first ] = iSlotIndex;
 
 			// 1 indicates that we swapped with left child
 			return 1;
@@ -171,11 +176,15 @@ int Heap::swapWithChildren(int iSlotIndex)
 
 	if (rightChildIndex < m_nextAvailableSlot) {
 		if(m_heapVector[iSlotIndex].second < m_heapVector[rightChildIndex].second) {
+			std::pair<int, int> element = m_heapVector[iSlotIndex];
 			// swap with child
 			std::pair<int, int> child = m_heapVector[rightChildIndex];
 
 			m_heapVector[rightChildIndex] = m_heapVector[iSlotIndex];
 			m_heapVector[iSlotIndex] = child;
+
+			m_indexerHeap[ element.first ] = rightChildIndex;
+			m_indexerHeap[ child.first ] = iSlotIndex;
 
 			// 1 indicates that we swapped with left child
 			return 2;
