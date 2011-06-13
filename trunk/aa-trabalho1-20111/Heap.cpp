@@ -11,7 +11,7 @@ Heap::Heap(int nVertex)
 
 Heap::~Heap()
 {
-	// Does nothing
+	delete m_heapVector;
 }
 
 void Heap::allocate()
@@ -28,7 +28,9 @@ void Heap::allocate()
 
 		m_heapVector[0] = lastInserted;
 
-		m_heapVector[m_nextAvailableSlot - 1] = *(new std::pair<int, int>(0, 0));
+		// element ja esta alocado no heapvector, para zerar eh so setar zero
+		m_heapVector[m_nextAvailableSlot - 1].first = 0;// = *(new std::pair<int, int>(0, 0));
+        m_heapVector[m_nextAvailableSlot - 1].second = 0;
 		m_nextAvailableSlot--;
 
 		bubleDownElement(0);
@@ -43,9 +45,12 @@ void Heap::allocate()
 
 void Heap::insertOnHeap(int iVertex, int degree)
 {	
-	std::pair<int, int> * element = new std::pair<int, int>(iVertex, degree);
+    // element ja esta alocado no heapvector, eh so setar as propriedades do pair
+	//std::pair<int, int> * element = new std::pair<int, int>(iVertex, degree);
 
-	m_heapVector[m_nextAvailableSlot] = *element;
+	//m_heapVector[m_nextAvailableSlot] = *element;
+    m_heapVector[m_nextAvailableSlot].first = iVertex;
+    m_heapVector[m_nextAvailableSlot].second = degree;
 	m_nextAvailableSlot++;
 
 	bubleUpElement(m_nextAvailableSlot - 1);
