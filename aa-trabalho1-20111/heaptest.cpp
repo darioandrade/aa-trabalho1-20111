@@ -3,89 +3,57 @@
 
 int main(int argc, char * argv[])
 {
-	Heap heap(20);
+	Heap heap(10);
 
-	fprintf(stderr, "inserindo 0, 4\n");
+	fprintf(stderr, "inserindo 0, 3\n");
 
-	heap.insertOnHeap(0, 4);
+	heap.insertOnHeap(0, 3);
 
-	fprintf(stderr, "inserindo 1, 3\n");
+	fprintf(stderr, "inserindo 1, 1\n");
 
-	heap.insertOnHeap(1, 3);
+	heap.insertOnHeap(1, 1);
 
-	fprintf(stderr, "inserindo 2, 4\n");
+	fprintf(stderr, "inserindo 2, 3\n");
 
-	heap.insertOnHeap(2, 4);
+	heap.insertOnHeap(2, 3);
 
-	fprintf(stderr, "inserindo 3, 3\n");
+	fprintf(stderr, "inserindo 3, 2\n");
 
-	heap.insertOnHeap(3, 3);
+	heap.insertOnHeap(3, 2);
 
 	fprintf(stderr, "inserindo 4, 2\n");
 
 	heap.insertOnHeap(4, 2);
 
-	fprintf(stderr, "inserindo 5, 5\n");
+	fprintf(stderr, "inserindo 5, 3\n");
 
-	heap.insertOnHeap(5, 5);
+	heap.insertOnHeap(5, 3);
 
-	fprintf(stderr, "inserindo 6, 8\n");
+	fprintf(stderr, "inserindo 6, 2\n");
 
-	heap.insertOnHeap(6, 8);
+	heap.insertOnHeap(6, 2);
 
-	fprintf(stderr, "inserindo 7, 3\n");
+	fprintf(stderr, "inserindo 7, 1\n");
 
-	heap.insertOnHeap(7, 3);
+	heap.insertOnHeap(7, 1);
 
-	fprintf(stderr, "inserindo 8, 6\n");
+	fprintf(stderr, "inserindo 8, 4\n");
 
-	heap.insertOnHeap(8, 6);
+	heap.insertOnHeap(8, 4);
 
-	fprintf(stderr, "inserindo 9, 3\n");
+	fprintf(stderr, "inserindo 9, 1\n");
 
-	heap.insertOnHeap(9, 3);
+	heap.insertOnHeap(9, 1);
 
-	fprintf(stderr, "inserindo 10, 4\n");
+	heap.print();
+	fprintf(stderr, "\n");
 
-	heap.insertOnHeap(10, 4);
+	heap.DecrementDegree(2);
 
-	fprintf(stderr, "inserindo 11, 1\n");
+	heap.print();
 
-	heap.insertOnHeap(11, 1);
-
-	fprintf(stderr, "inserindo 12, 3\n");
-
-	heap.insertOnHeap(12, 3);
-
-	fprintf(stderr, "inserindo 13, 4\n");
-
-	heap.insertOnHeap(13, 4);
-
-	fprintf(stderr, "inserindo 14, 4\n");
-
-	heap.insertOnHeap(14, 4);
-
-	fprintf(stderr, "inserindo 15, 3\n");
-
-	heap.insertOnHeap(15, 3);
-
-	fprintf(stderr, "inserindo 16, 7\n");
-
-	heap.insertOnHeap(16, 7);
-
-	fprintf(stderr, "inserindo 17, 5\n");
-
-	heap.insertOnHeap(17, 5);
-
-	fprintf(stderr, "inserindo 18, 0\n");
-
-	heap.insertOnHeap(18, 0);
-
-	fprintf(stderr, "inserindo 19, 6\n");
-
-	heap.insertOnHeap(19, 6);
-
-	fprintf(stderr, "Removendo da heap:\n");
+	
+/*	fprintf(stderr, "Removendo da heap:\n");
 
 
 	for(int i = 0; i < 20; i++) {
@@ -94,5 +62,6 @@ int main(int argc, char * argv[])
 		
 		fprintf(stderr, "%d - vertex: %d - degree: %d\n", i, element.first, element.second);
 	}
+ * */
 	return 0;
 }
