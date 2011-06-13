@@ -6,6 +6,7 @@
  */
 
 #include "DegreeVectorAdjacencyList.h"
+#include "Heap.h"
 
 DegreeVectorAdjacencyList::DegreeVectorAdjacencyList (  )
 {

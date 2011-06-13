@@ -54,7 +54,18 @@ void Heap::insertOnHeap(int iVertex, int degree)
 
 void Heap::DecrementDegree( int iVertex )
 {
-    
+	int i = 0;
+
+	for(; i < m_nVertex; i++) {
+		// Search iVertex
+		if (m_heapVector[i].first == iVertex) {
+			// Decrement degree
+			m_heapVector[i].second--;
+			break;
+		}
+	}
+
+	bubleDownElement(i);
 }
 
 
@@ -145,7 +156,7 @@ int Heap::swapWithChildren(int iSlotIndex)
 
 		// 1 indicates that we swapped with left child
 		return 1;
-	} else {
+	} else if(m_heapVector[iSlotIndex].second < m_heapVector[(2 * iSlotIndex + 2)].second) {
 		// swap with child
 		std::pair<int, int> child = m_heapVector[(2 * iSlotIndex + 2)];
 

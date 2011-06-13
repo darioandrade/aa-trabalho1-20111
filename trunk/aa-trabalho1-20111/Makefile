@@ -5,7 +5,7 @@ OBJS_GRAPHGEN = graphgen.o
 OBJS_READWRITE = readwritetest.o
 OBJS_COBERTURA = cobertura.o
 
-LIBS = DegreeVectorAdjacencyList.o AdjacencyList.o GeraGrafo.o AlgoritmoCoberturaGulosa.o VertexVectorAdjacencyList.o Heap.o
+LIBS = DegreeHeapAdjacencyList.o DegreeVectorAdjacencyList.o AdjacencyList.o GeraGrafo.o AlgoritmoCoberturaGulosa.o VertexVectorAdjacencyList.o Heap.o
 
 TARGET-HEAP = heaptest
 TARGET-READWRITE = readwritetest
