@@ -10,7 +10,10 @@
 
 #define MAX_LINE_SIZE ( 64 * 1024 )
 
-AdjacencyList::AdjacencyList ( ) : m_nVertex( 0 ), m_nEdges( 0 )
+AdjacencyList::AdjacencyList ( )
+: 
+  m_nVertex( 0 ),
+  m_nEdges( 0 )
 {
 }
 
@@ -23,17 +26,25 @@ AdjacencyList::AdjacencyList ( int nVertex )
 
 AdjacencyList::~AdjacencyList ( )
 {
-    delete [ ] m_arrAdjLists;
+	for(int i = 0; i < m_nVertex; i++) {
+		delete m_arrAdjLists[i];
+	}
+
+    delete m_arrAdjLists;
 }
 
 void AdjacencyList::Allocate( int nVertex )
 {
-    m_arrAdjLists = new std::set< int >[ nVertex ];
+    m_arrAdjLists = new List * [ nVertex ];
+
+	for(int i = 0; i < nVertex; i++) {
+		m_arrAdjLists[i] = new List();
+	}
 }
 
 void AdjacencyList::addEdge ( int iVertex, int jVertex, bool bUpdateNeighbor, bool bIncEdge )
 {
-    m_arrAdjLists[ iVertex ].insert( jVertex );
+    m_arrAdjLists[ iVertex ]->insertAtEnd( jVertex );
 
     if ( bIncEdge )
     {
@@ -42,7 +53,7 @@ void AdjacencyList::addEdge ( int iVertex, int jVertex, bool bUpdateNeighbor, bo
 
     if ( bUpdateNeighbor )
     {
-        m_arrAdjLists[ jVertex ].insert( iVertex );
+        m_arrAdjLists[ jVertex ]->insertAtEnd( iVertex );
     }
 }
 
@@ -59,10 +70,12 @@ void AdjacencyList::write ( FILE * f )
     // run all vertex
     for ( int i = 0; i < m_nVertex; i++ )
     {
+
+
         // iterate through edges
-        for ( std::set<int>::iterator it = m_arrAdjLists[ i ].begin( ); it != m_arrAdjLists[ i ].end( ); it++ )
+        for (ListNode * node = m_arrAdjLists[i]->getFirst(); node != NULL ; node = node->next())
         {
-            fprintf( f, "%d ", *it );
+            fprintf( f, "%d ", node->getContent() );
         }
 
         fputs( "\n", f );

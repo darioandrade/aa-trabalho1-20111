@@ -23,24 +23,24 @@ int DegreeHeapAdjacencyList::RemoveHighestDegreeVertex( int debug )
     m_heap->removeFromHeap( vertex );
     int iHighestDegreeVertex = vertex.first;
     
-    std::set<int> neighbors = m_arrAdjLists[ iHighestDegreeVertex ];
+    List * neighbors = m_arrAdjLists[ iHighestDegreeVertex ];
     
     if ( debug >= 2 )
     {
         fprintf( stderr, "  vertice %d tem %d vizinhos\n",
                  iHighestDegreeVertex,
-                 ( int ) neighbors.size( ) );
+                 neighbors->size() );
     }
     
     // decrease its neighbor's degree
-    for ( std::set< int >::iterator it = neighbors.begin( );
-            it != neighbors.end( );
-            it ++ )
+    for ( ListNode * node = neighbors->getFirst();
+		node != NULL;
+		node = node->next())
     {
-        int iNeighbor = *it;
+        int iNeighbor = node->getContent();
 
         // update this vertex's neighbor's list that this vertex is being removed
-        m_arrAdjLists[ iNeighbor ].erase( iHighestDegreeVertex );
+        m_arrAdjLists[ iNeighbor ]->erase( iHighestDegreeVertex );
 
         // remove edge from this vertex
         m_nEdges --;
@@ -50,7 +50,7 @@ int DegreeHeapAdjacencyList::RemoveHighestDegreeVertex( int debug )
     }
     
     // remove edges to neighbors, and let the vertex linger
-    neighbors.clear( );
+    //neighbors.clear( );
     
     return iHighestDegreeVertex;
     
@@ -61,6 +61,6 @@ void DegreeHeapAdjacencyList::updateData( )
 	
     for( int i = 0; i < m_nVertex; i++ )
     {
-        m_heap->insertOnHeap( i, (int) m_arrAdjLists[i].size() );
+        m_heap->insertOnHeap( i, (int) m_arrAdjLists[i]->size() );
     }
 }

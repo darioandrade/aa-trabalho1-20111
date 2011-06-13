@@ -82,24 +82,24 @@ int DegreeVectorAdjacencyList::RemoveHighestDegreeVertex( int debug )
     int iHighestDegreeVertex = GetHighestDegreeVertex( );
 
     // find neighbors of this vertex
-    std::set< int > neighbors = m_arrAdjLists[ iHighestDegreeVertex ];
+    List * neighbors = m_arrAdjLists[ iHighestDegreeVertex ];
 
     if ( debug >= 2 )
     {
         fprintf( stderr, "  vertice %d tem %d vizinhos e grau: %d\n",
                  iHighestDegreeVertex,
-                 ( int ) neighbors.size( ),
+                 neighbors->size( ),
                  GetDegree( iHighestDegreeVertex ) );
     }
 
-    for ( std::set< int >::iterator it = neighbors.begin( );
-            it != neighbors.end( );
-            it ++ )
+    for ( ListNode * node = neighbors->getFirst();
+		node != NULL;
+		node = node->next())
     {
-        int iNeighbor = *it;
+        int iNeighbor = node->getContent();
 
         // update this vertex's neighbor's list that this vertex is being removed
-        m_arrAdjLists[ iNeighbor ].erase( iHighestDegreeVertex );
+        m_arrAdjLists[ iNeighbor ]->erase( iHighestDegreeVertex );
 
         // remove edge from this vertex
         m_nEdges --;
@@ -109,7 +109,7 @@ int DegreeVectorAdjacencyList::RemoveHighestDegreeVertex( int debug )
     }
 
     // remove edges to neighbors, and let the vertex linger and ...
-    neighbors.clear( );
+    //neighbors.clear( );
     // reset degree
     SetDegree( iHighestDegreeVertex, 0 );
 

@@ -86,7 +86,7 @@ void Tarefa_4( char sFilename[ ], int debug )
 
 void Tarefa_5( char sFilename[ ], int debug )
 {    
-     VertexVectorAdjacencyList grafo5;
+    VertexVectorAdjacencyList grafo5;
 
     fprintf( stderr, "Lendo grafo %s:\n",
              sFilename );
