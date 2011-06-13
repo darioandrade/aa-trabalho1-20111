@@ -3,11 +3,17 @@
 
 DegreeHeapAdjacencyList::DegreeHeapAdjacencyList( )
 {
-    m_heap = new Heap( m_nVertex );
 }
 DegreeHeapAdjacencyList::~DegreeHeapAdjacencyList( )
 {
     delete m_heap;
+}
+
+void DegreeHeapAdjacencyList::Allocate( int nVertex )
+{
+    AdjacencyList::Allocate( nVertex );
+    
+    m_heap = new Heap( nVertex );
 }
 
 int DegreeHeapAdjacencyList::RemoveHighestDegreeVertex( int debug )

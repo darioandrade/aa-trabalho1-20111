@@ -177,9 +177,9 @@ void Heap::print()
 		fprintf(stderr, " %d ", m_heapVector[i].first);
 	}
 
-	fprintf(stderr, "Degrees: \n");
+	fprintf(stderr, "\nDegrees: \n");
 	for(int i = 0; i < m_nVertex; i++) {
 		fprintf(stderr, " %d ", m_heapVector[i].second);
 	}
-
+    fprintf(stderr, "\n");
 }
