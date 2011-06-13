@@ -42,7 +42,7 @@ void Heap::allocate()
 }
 
 void Heap::insertOnHeap(int iVertex, int degree)
-{
+{	
 	std::pair<int, int> * element = new std::pair<int, int>(iVertex, degree);
 
 	m_heapVector[m_nextAvailableSlot] = *element;
@@ -55,7 +55,6 @@ void Heap::insertOnHeap(int iVertex, int degree)
 void Heap::DecrementDegree( int iVertex )
 {
 	int i = 0;
-
 	for(; i < m_nVertex; i++) {
 		// Search iVertex
 		if (m_heapVector[i].first == iVertex) {
@@ -64,7 +63,7 @@ void Heap::DecrementDegree( int iVertex )
 			break;
 		}
 	}
-
+	
 	bubleDownElement(i);
 }
 
@@ -122,49 +121,60 @@ int Heap::swapWithChildren(int iSlotIndex)
 	int higher = -1;
 	int result = -1;
 
-	if (m_heapVector[iSlotIndex].second < m_heapVector[(2 * iSlotIndex + 1)].second &&
-		m_heapVector[iSlotIndex].second < m_heapVector[(2 * iSlotIndex + 2)].second) {
-		if (m_heapVector[(2 * iSlotIndex + 1)].second > m_heapVector[(2 * iSlotIndex + 2)].second) {
-			higher = 2 * iSlotIndex + 1;
-			result = 1;
+	int leftChildIndex = 2 * iSlotIndex + 1;
+	int rightChildIndex = 2 * iSlotIndex + 2;
 
-		} else if (m_heapVector[(2 * iSlotIndex + 2)].second > m_heapVector[(2 * iSlotIndex + 1)].second) {
-			higher = 2 * iSlotIndex + 2;
-			result = 2;
+	if((leftChildIndex < m_nextAvailableSlot)  && (rightChildIndex < m_nextAvailableSlot)) {
+		if (m_heapVector[iSlotIndex].second < m_heapVector[leftChildIndex].second &&
+			m_heapVector[iSlotIndex].second < m_heapVector[rightChildIndex].second) {
+			if (m_heapVector[leftChildIndex].second > m_heapVector[rightChildIndex].second) {
+				higher = 2 * iSlotIndex + 1;
+				result = 1;
+
+			} else if (m_heapVector[rightChildIndex].second > m_heapVector[leftChildIndex].second) {
+				higher = 2 * iSlotIndex + 2;
+				result = 2;
+			}
+		}
+
+		if (higher != -1) {
+			// swap with child
+			std::pair<int, int> child = m_heapVector[higher];
+
+			m_heapVector[higher] = m_heapVector[iSlotIndex];
+			m_heapVector[iSlotIndex] = child;
+
+			// 1 indicates that we swapped with left child
+			return result;
 		}
 	}
 
-	if (higher != -1) {
-		// swap with child
-		std::pair<int, int> child = m_heapVector[higher];
+	if (leftChildIndex < m_nextAvailableSlot) {
+		// Compare with left child
+		if (m_heapVector[iSlotIndex].second < m_heapVector[leftChildIndex].second) {
 
-		m_heapVector[higher] = m_heapVector[iSlotIndex];
-		m_heapVector[iSlotIndex] = child;
+			// swap with child
+			std::pair<int, int> child = m_heapVector[leftChildIndex];
 
-		// 1 indicates that we swapped with left child
-		return result;
+			m_heapVector[leftChildIndex] = m_heapVector[iSlotIndex];
+			m_heapVector[iSlotIndex] = child;
+
+			// 1 indicates that we swapped with left child
+			return 1;
+		}
 	}
 
-	// Compare with left child
-	if (m_heapVector[iSlotIndex].second < m_heapVector[(2 * iSlotIndex + 1)].second) {
+	if (rightChildIndex < m_nextAvailableSlot) {
+		if(m_heapVector[iSlotIndex].second < m_heapVector[rightChildIndex].second) {
+			// swap with child
+			std::pair<int, int> child = m_heapVector[rightChildIndex];
 
-		// swap with child
-		std::pair<int, int> child = m_heapVector[(2 * iSlotIndex + 1)];
+			m_heapVector[rightChildIndex] = m_heapVector[iSlotIndex];
+			m_heapVector[iSlotIndex] = child;
 
-		m_heapVector[(2 * iSlotIndex + 1)] = m_heapVector[iSlotIndex];
-		m_heapVector[iSlotIndex] = child;
-
-		// 1 indicates that we swapped with left child
-		return 1;
-	} else if(m_heapVector[iSlotIndex].second < m_heapVector[(2 * iSlotIndex + 2)].second) {
-		// swap with child
-		std::pair<int, int> child = m_heapVector[(2 * iSlotIndex + 2)];
-
-		m_heapVector[(2 * iSlotIndex + 2)] = m_heapVector[iSlotIndex];
-		m_heapVector[iSlotIndex] = child;
-
-		// 1 indicates that we swapped with left child
-		return 2;
+			// 1 indicates that we swapped with left child
+			return 2;
+		}
 	}
 
 	return 0;

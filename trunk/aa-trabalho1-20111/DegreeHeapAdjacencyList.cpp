@@ -58,8 +58,9 @@ int DegreeHeapAdjacencyList::RemoveHighestDegreeVertex( int debug )
 
 void DegreeHeapAdjacencyList::updateData( )
 {
+	
     for( int i = 0; i < m_nVertex; i++ )
     {
-        m_heap->insertOnHeap( i, (int) m_arrAdjLists->size() );
+        m_heap->insertOnHeap( i, (int) m_arrAdjLists[i].size() );
     }
 }
