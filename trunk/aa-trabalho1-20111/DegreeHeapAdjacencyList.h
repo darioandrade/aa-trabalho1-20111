@@ -11,6 +11,7 @@ public:
     
     virtual ~DegreeHeapAdjacencyList ( );
 
+    void Allocate( int nVertex );
     int RemoveHighestDegreeVertex( int debug );
 
 protected:
