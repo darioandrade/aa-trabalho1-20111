@@ -30,6 +30,7 @@ private:
 	// Vector of [vertex, degree] pairs
 	std::pair<int, int> * m_heapVector;
 
+	int * m_indexerHeap;
 	int m_nextAvailableSlot;
 
 };
