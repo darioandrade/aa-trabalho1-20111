@@ -20,6 +20,7 @@ AlgoritmoCoberturaGulosa::~AlgoritmoCoberturaGulosa ( )
 
 void AlgoritmoCoberturaGulosa::CalculateCobertura(std::list< int > & listCobertura, AdjacencyList & grafo, int debug )
 {
+
     while ( grafo.HasEdge( ) )
     {
         if ( debug >= 2 )

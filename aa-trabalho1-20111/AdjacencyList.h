@@ -9,7 +9,7 @@
 #define ADJACENCYLIST_H_
 
 #include <stdio.h>
-#include <set>
+#include "List.h"
 
 class AdjacencyList {
 
@@ -27,7 +27,7 @@ public:
 
         int GetSize() const { return m_nVertex; }
 
-		int GetDegree(int iVertex) { return (int)m_arrAdjLists[iVertex].size(); }
+		int GetDegree(int iVertex) { return (int)m_arrAdjLists[iVertex]->size(); }
 
 
 protected:
@@ -36,7 +36,7 @@ protected:
         virtual void updateData(){ }
         
 	int						m_nVertex;
-	std::set< int >		    * m_arrAdjLists;
+	List ** m_arrAdjLists;
 
 	int                     m_nEdges;
 };

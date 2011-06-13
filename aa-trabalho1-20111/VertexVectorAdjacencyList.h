@@ -22,7 +22,7 @@ protected:
 private:
     
     int                             m_lastHighestDegree;
-    std::set< int >		    * m_vectorVertex;
+    List ** m_vectorVertex;
 };
 
 #endif /* DEGREEVECTORADJACENCYLIST_H_ */

@@ -52,16 +52,16 @@ int main(int argc, char * argv[])
 
 	heap.print();
 
-	
-/*	fprintf(stderr, "Removendo da heap:\n");
+
+	fprintf(stderr, "Removendo da heap:\n");
 
 
 	for(int i = 0; i < 20; i++) {
 		std::pair<int, int> element;
 		heap.removeFromHeap(element);
-		
+
 		fprintf(stderr, "%d - vertex: %d - degree: %d\n", i, element.first, element.second);
 	}
- * */
+	
 	return 0;
 }
