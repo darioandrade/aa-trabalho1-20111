@@ -1,4 +1,4 @@
-CXXFLAGS = -O2 -g -Wall -fmessage-length=0
+CXXFLAGS = -O2 -g -Wall -fmessage-length=0 -I/usr/include/malloc
 
 OBJS_HEAP = heaptest.o
 OBJS_GRAPHGEN = graphgen.o
