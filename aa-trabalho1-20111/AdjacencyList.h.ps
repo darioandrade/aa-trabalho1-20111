@@ -1,0 +1,909 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 24 24 571 818
+%%Title: Enscript Output
+%%For: Dario Souza
+%%Creator: GNU enscript 1.6.4
+%%CreationDate: Tue Jun 14 20:48:43 2011
+%%Orientation: Portrait
+%%Pages: (atend)
+%%DocumentMedia: A4 595 842 0 () ()
+%%DocumentNeededResources: (atend)
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset Enscript-Prolog 1.6 4
+%
+% Procedures.
+%
+
+/_S {	% save current state
+  /_s save def
+} def
+/_R {	% restore from saved state
+  _s restore
+} def
+
+/S {	% showpage protecting gstate
+  gsave
+  showpage
+  grestore
+} bind def
+
+/MF {	% fontname newfontname -> -	make a new encoded font
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  % insert only valid encoding vectors
+  encoding_vector length 256 eq {
+    newfont /Encoding encoding_vector put
+  } if
+
+  newfontname newfont definefont pop
+} def
+
+/MF_PS { % fontname newfontname -> -	make a new font preserving its enc
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  newfontname newfont definefont pop
+} def
+
+/SF { % fontname width height -> -	set a new font
+  /height exch def
+  /width exch def
+
+  findfont
+  [width 0 0 height 0 0] makefont setfont
+} def
+
+/SUF { % fontname width height -> -	set a new user font
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF
+  /F-gs-user-font width height SF
+} def
+
+/SUF_PS { % fontname width height -> -	set a new user font preserving its enc
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF_PS
+  /F-gs-user-font width height SF
+} def
+
+/M {moveto} bind def
+/s {show} bind def
+
+/Box {	% x y w h -> -			define box path
+  /d_h exch def /d_w exch def /d_y exch def /d_x exch def
+  d_x d_y  moveto
+  d_w 0 rlineto
+  0 d_h rlineto
+  d_w neg 0 rlineto
+  closepath
+} def
+
+/bgs {	% x y height blskip gray str -> -	show string with bg color
+  /str exch def
+  /gray exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    gray setgray
+    fill
+  grestore
+  x y M str s
+} def
+
+/bgcs { % x y height blskip red green blue str -> -  show string with bg color
+  /str exch def
+  /blue exch def
+  /green exch def
+  /red exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    red green blue setrgbcolor
+    fill
+  grestore
+  x y M str s
+} def
+
+% Highlight bars.
+/highlight_bars {	% nlines lineheight output_y_margin gray -> -
+  gsave
+    setgray
+    /ymarg exch def
+    /lineheight exch def
+    /nlines exch def
+
+    % This 2 is just a magic number to sync highlight lines to text.
+    0 d_header_y ymarg sub 2 sub translate
+
+    /cw d_output_w cols div def
+    /nrows d_output_h ymarg 2 mul sub lineheight div cvi def
+
+    % for each column
+    0 1 cols 1 sub {
+      cw mul /xp exch def
+
+      % for each rows
+      0 1 nrows 1 sub {
+        /rn exch def
+        rn lineheight mul neg /yp exch def
+        rn nlines idiv 2 mod 0 eq {
+	  % Draw highlight bar.  4 is just a magic indentation.
+	  xp 4 add yp cw 8 sub lineheight neg Box fill
+	} if
+      } for
+    } for
+
+  grestore
+} def
+
+% Line highlight bar.
+/line_highlight {	% x y width height gray -> -
+  gsave
+    /gray exch def
+    Box gray setgray fill
+  grestore
+} def
+
+% Column separator lines.
+/column_lines {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h translate
+    /cw d_output_w cols div def
+    1 1 cols 1 sub {
+      cw mul 0 moveto
+      0 d_output_h rlineto stroke
+    } for
+  grestore
+} def
+
+% Column borders.
+/column_borders {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h moveto
+    0 d_output_h rlineto
+    d_output_w 0 rlineto
+    0 d_output_h neg rlineto
+    closepath stroke
+  grestore
+} def
+
+% Do the actual underlay drawing
+/draw_underlay {
+  ul_style 0 eq {
+    ul_str true charpath stroke
+  } {
+    ul_str show
+  } ifelse
+} def
+
+% Underlay
+/underlay {	% - -> -
+  gsave
+    0 d_page_h translate
+    d_page_h neg d_page_w atan rotate
+
+    ul_gray setgray
+    ul_font setfont
+    /dw d_page_h dup mul d_page_w dup mul add sqrt def
+    ul_str stringwidth pop dw exch sub 2 div ul_h_ptsize -2 div moveto
+    draw_underlay
+  grestore
+} def
+
+/user_underlay {	% - -> -
+  gsave
+    ul_x ul_y translate
+    ul_angle rotate
+    ul_gray setgray
+    ul_font setfont
+    0 0 ul_h_ptsize 2 div sub moveto
+    draw_underlay
+  grestore
+} def
+
+% Page prefeed
+/page_prefeed {		% bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} def
+
+% Wrapped line markers
+/wrapped_line_mark {	% x y charwith charheight type -> -
+  /type exch def
+  /h exch def
+  /w exch def
+  /y exch def
+  /x exch def
+
+  type 2 eq {
+    % Black boxes (like TeX does)
+    gsave
+      0 setlinewidth
+      x w 4 div add y M
+      0 h rlineto w 2 div 0 rlineto 0 h neg rlineto
+      closepath fill
+    grestore
+  } {
+    type 3 eq {
+      % Small arrows
+      gsave
+        .2 setlinewidth
+        x w 2 div add y h 2 div add M
+        w 4 div 0 rlineto
+        x w 4 div add y lineto stroke
+
+        x w 4 div add w 8 div add y h 4 div add M
+        x w 4 div add y lineto
+	w 4 div h 8 div rlineto stroke
+      grestore
+    } {
+      % do nothing
+    } ifelse
+  } ifelse
+} def
+
+% EPSF import.
+
+/BeginEPSF {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack
+  userdict begin
+  /showpage { } def
+  0 setgray 0 setlinecap
+  1 setlinewidth 0 setlinejoin
+  10 setmiterlimit [ ] 0 setdash newpath
+  /languagelevel where {
+    pop languagelevel
+    1 ne {
+      false setstrokeadjust false setoverprint
+    } if
+  } if
+} bind def
+
+/EndEPSF {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+%%EndResource
+%%BeginResource: procset Enscript-Encoding-88591 1.6 4
+/encoding_vector [
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclam       	/quotedbl     	/numbersign   	
+/dollar       	/percent      	/ampersand    	/quoteright   	
+/parenleft    	/parenright   	/asterisk     	/plus         	
+/comma        	/hyphen       	/period       	/slash        	
+/zero         	/one          	/two          	/three        	
+/four         	/five         	/six          	/seven        	
+/eight        	/nine         	/colon        	/semicolon    	
+/less         	/equal        	/greater      	/question     	
+/at           	/A            	/B            	/C            	
+/D            	/E            	/F            	/G            	
+/H            	/I            	/J            	/K            	
+/L            	/M            	/N            	/O            	
+/P            	/Q            	/R            	/S            	
+/T            	/U            	/V            	/W            	
+/X            	/Y            	/Z            	/bracketleft  	
+/backslash    	/bracketright 	/asciicircum  	/underscore   	
+/quoteleft    	/a            	/b            	/c            	
+/d            	/e            	/f            	/g            	
+/h            	/i            	/j            	/k            	
+/l            	/m            	/n            	/o            	
+/p            	/q            	/r            	/s            	
+/t            	/u            	/v            	/w            	
+/x            	/y            	/z            	/braceleft    	
+/bar          	/braceright   	/tilde        	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclamdown   	/cent         	/sterling     	
+/currency     	/yen          	/brokenbar    	/section      	
+/dieresis     	/copyright    	/ordfeminine  	/guillemotleft	
+/logicalnot   	/hyphen       	/registered   	/macron       	
+/degree       	/plusminus    	/twosuperior  	/threesuperior	
+/acute        	/mu           	/paragraph    	/bullet       	
+/cedilla      	/onesuperior  	/ordmasculine 	/guillemotright	
+/onequarter   	/onehalf      	/threequarters	/questiondown 	
+/Agrave       	/Aacute       	/Acircumflex  	/Atilde       	
+/Adieresis    	/Aring        	/AE           	/Ccedilla     	
+/Egrave       	/Eacute       	/Ecircumflex  	/Edieresis    	
+/Igrave       	/Iacute       	/Icircumflex  	/Idieresis    	
+/Eth          	/Ntilde       	/Ograve       	/Oacute       	
+/Ocircumflex  	/Otilde       	/Odieresis    	/multiply     	
+/Oslash       	/Ugrave       	/Uacute       	/Ucircumflex  	
+/Udieresis    	/Yacute       	/Thorn        	/germandbls   	
+/agrave       	/aacute       	/acircumflex  	/atilde       	
+/adieresis    	/aring        	/ae           	/ccedilla     	
+/egrave       	/eacute       	/ecircumflex  	/edieresis    	
+/igrave       	/iacute       	/icircumflex  	/idieresis    	
+/eth          	/ntilde       	/ograve       	/oacute       	
+/ocircumflex  	/otilde       	/odieresis    	/divide       	
+/oslash       	/ugrave       	/uacute       	/ucircumflex  	
+/udieresis    	/yacute       	/thorn        	/ydieresis    	
+] def
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Courier
+/HFpt_w 10 def
+/HFpt_h 10 def
+/Courier-Bold /HF-gs-font MF
+/HF /HF-gs-font findfont [HFpt_w 0 0 HFpt_h 0 0] makefont def
+/Courier /F-gs-font MF
+/F-gs-font 7 7 SF
+/#copies 1 def
+% Pagedevice definitions:
+gs_languagelevel 1 gt {
+  <<
+    /PageSize [595 842] 
+  >> setpagedevice
+} if
+%%BeginResource: procset Enscript-Header-enscript 1.6 4
+%%IncludeResource: font Times-Bold
+%%IncludeResource: font Times-Roman
+
+% Fonts.
+/Times-Bold /HeaderFont-Bold MF
+/HeaderDateF /HeaderFont-Bold findfont 12 scalefont def
+
+/Times-Roman /HeaderFont-Times MF
+/HeaderHDRF /HeaderFont-Times findfont 14 scalefont def
+
+/HeaderPageNumF /Helvetica-Bold findfont 28.8 scalefont def
+
+/do_header {	% print enscript header
+  gsave
+    d_header_x d_header_y translate
+
+    % light bar
+    0 0 d_header_w d_header_h 2 div Box
+    .95 setgray fill
+
+    % dark gray boxes
+    /dbw d_header_h 2 mul def	% dark box width
+    /dbc .7 def			% dark box color
+
+    % left dark box.
+    0 0 dbw d_header_h Box
+    dbc setgray fill
+
+    0 setgray 
+    HeaderDateF setfont
+    moddatestr dup stringwidth pop dbw exch sub 2 div 
+    d_header_h 2 div 2 add moveto show
+    modtimestr dup stringwidth pop dbw exch sub 2 div 
+    d_header_h 5 div moveto show
+
+    % right dark box
+    d_header_w dbw sub 0 dbw d_header_h Box
+    dbc setgray fill
+
+    HeaderPageNumF setfont
+    1 setgray
+    pagenumstr dup
+    stringwidth pop dbw exch sub 2 div d_header_w dbw sub add
+    d_header_h .2 mul moveto show
+
+    % filename
+    0 setgray 
+    HeaderHDRF setfont
+    d_header_w fname stringwidth pop sub 2 div d_header_h 8 div moveto
+    fname show
+
+    % user supplied header string.
+    user_header_p {
+      /h d_header_h 8 div 5 mul def
+
+      % Implement strict enscript compatibility.
+      user_header_center_str () eq user_header_right_str () eq and {
+        d_header_w user_header_left_str stringwidth pop sub 2 div 
+        h moveto user_header_left_str show
+      } {
+        dbw 5 add h moveto user_header_left_str show
+
+        d_header_w user_header_center_str stringwidth pop sub 2 div 
+        h moveto user_header_center_str show
+
+	d_header_w dbw sub 5 sub user_header_right_str stringwidth pop
+	sub h moveto user_header_right_str show
+      } ifelse
+    } if
+
+  grestore
+} def
+%%EndResource
+/d_page_w 547 def
+/d_page_h 794 def
+/d_header_x 0 def
+/d_header_y 758 def
+/d_header_w 547 def
+/d_header_h 36 def
+/d_footer_x 0 def
+/d_footer_y 0 def
+/d_footer_w 547 def
+/d_footer_h 0 def
+/d_output_w 547 def
+/d_output_h 758 def
+/cols 1 def
+%%EndSetup
+%%Page: (1) 1
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 1 def
+/fname (AdjacencyList.h) def
+/fdir () def
+/ftail (AdjacencyList.h) def
+% User defined strings:
+/pagenumstr (1) def
+/moddatestr (06/14/11) def
+/modtimestr (17:13:29) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+22.8 748 M (1:) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+35.4 748 M
+(/*) s
+/F-gs-font 7 7 SF
+22.8 740 M (2:) s
+/Courier-Oblique 7 7 SUF
+35.4 740 M
+( * AdjacencyList.h) s
+/F-gs-font 7 7 SF
+22.8 732 M (3:) s
+/Courier-Oblique 7 7 SUF
+35.4 732 M
+( *) s
+/F-gs-font 7 7 SF
+22.8 724 M (4:) s
+/Courier-Oblique 7 7 SUF
+35.4 724 M
+( *  Created on: May 28, 2011) s
+/F-gs-font 7 7 SF
+22.8 716 M (5:) s
+/Courier-Oblique 7 7 SUF
+35.4 716 M
+( *      Author: darioandrade) s
+/F-gs-font 7 7 SF
+22.8 708 M (6:) s
+/Courier-Oblique 7 7 SUF
+35.4 708 M
+( */) s
+/F-gs-font 7 7 SF
+0 setgray
+22.8 700 M (7:) s
+22.8 692 M (8:) s
+35.4 692 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 692 M
+(ifndef) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 692 M
+( ) s
+/Courier 7 7 SUF
+0.721569 0.52549 0.043137 setrgbcolor
+69 692 M
+(ADJACENCYLIST_H_) s
+/F-gs-font 7 7 SF
+0 setgray
+22.8 684 M (9:) s
+35.4 684 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 684 M
+(define) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 684 M
+( ) s
+/Courier 7 7 SUF
+0.721569 0.52549 0.043137 setrgbcolor
+69 684 M
+(ADJACENCYLIST_H_) s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 676 M (10:) s
+18.6 668 M (11:) s
+35.4 668 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 668 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 668 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 668 M
+(<stdio.h>) s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 660 M (12:) s
+35.4 660 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 660 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 660 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 660 M
+("List.h") s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 652 M (13:) s
+18.6 644 M (14:) s
+35.4 644 M
+(class AdjacencyList {) s
+18.6 636 M (15:) s
+18.6 628 M (16:) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+35.4 628 M
+(public) s
+/F-gs-font 7 7 SF
+0 setgray
+60.6 628 M
+(:) s
+18.6 620 M (17:) s
+18.6 612 M (18:) s
+35.4 612 M
+(    AdjacencyList\( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+115.2 612 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+127.8 612 M
+( nVertex \);) s
+18.6 604 M (19:) s
+35.4 604 M
+(    virtual ~AdjacencyList\( \);) s
+18.6 596 M (20:) s
+18.6 588 M (21:) s
+35.4 588 M
+(    virtual ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+85.8 588 M
+(void) s
+/F-gs-font 7 7 SF
+0 setgray
+102.6 588 M
+( addEdge\( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+144.6 588 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+157.2 588 M
+( iVertex, ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+199.2 588 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+211.8 588 M
+( jVertex, bool bUpdateNeighbor = true, bool bIncEdge = true \);) s
+18.6 580 M (22:) s
+35.4 580 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 580 M
+(void) s
+/F-gs-font 7 7 SF
+0 setgray
+69 580 M
+( write\( FILE * f = NULL \);) s
+18.6 572 M (23:) s
+35.4 572 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 572 M
+(void) s
+/F-gs-font 7 7 SF
+0 setgray
+69 572 M
+( read\( FILE * f = NULL, ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+169.8 572 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+182.4 572 M
+( debug = 0 \);) s
+18.6 564 M (24:) s
+18.6 556 M (25:) s
+35.4 556 M
+(    virtual bool HasEdge\( \) ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+153 556 M
+(const) s
+/F-gs-font 7 7 SF
+0 setgray
+174 556 M
+(;) s
+18.6 548 M (26:) s
+35.4 548 M
+(    virtual ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+85.8 548 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+98.4 548 M
+( RemoveHighestDegreeVertex\( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+216 548 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+228.6 548 M
+( debug \) { ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+274.8 548 M
+(return) s
+/F-gs-font 7 7 SF
+0 setgray
+300 548 M
+( -1; }) s
+18.6 540 M (27:) s
+18.6 532 M (28:) s
+35.4 532 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 532 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 532 M
+( GetSize\(\) ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+111 532 M
+(const) s
+/F-gs-font 7 7 SF
+0 setgray
+132 532 M
+( { ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+144.6 532 M
+(return) s
+/F-gs-font 7 7 SF
+0 setgray
+169.8 532 M
+( m_nVertex; }) s
+18.6 524 M (29:) s
+35.4 524 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 524 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 524 M
+( GetEdges\(\) ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+115.2 524 M
+(const) s
+/F-gs-font 7 7 SF
+0 setgray
+136.2 524 M
+( { ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+148.8 524 M
+(return) s
+/F-gs-font 7 7 SF
+0 setgray
+174 524 M
+( m_nEdges; }) s
+18.6 516 M (30:) s
+18.6 508 M (31:) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+35.4 508 M
+(//  int GetDegree\(int iVertex\) { return \(int\)m_arrAdjLists[iVertex]->size\(\); }) s
+/F-gs-font 7 7 SF
+18.6 500 M (32:) s
+/Courier-Oblique 7 7 SUF
+/F-gs-font 7 7 SF
+0 setgray
+18.6 492 M (33:) s
+18.6 484 M (34:) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+35.4 484 M
+(protected) s
+/F-gs-font 7 7 SF
+0 setgray
+73.2 484 M
+(:) s
+18.6 476 M (35:) s
+35.4 476 M
+(    AdjacencyList\( \);) s
+18.6 468 M (36:) s
+35.4 468 M
+(    virtual ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+85.8 468 M
+(void) s
+/F-gs-font 7 7 SF
+0 setgray
+102.6 468 M
+( Allocate\( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+148.8 468 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+161.4 468 M
+( nVertex \);) s
+18.6 460 M (37:) s
+35.4 460 M
+(    virtual ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+85.8 460 M
+(void) s
+/F-gs-font 7 7 SF
+0 setgray
+102.6 460 M
+( updateData\(\){ }) s
+18.6 452 M (38:) s
+35.4 452 M
+(        ) s
+18.6 444 M (39:) s
+35.4 444 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 444 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 444 M
+(                     m_nVertex;) s
+18.6 436 M (40:) s
+35.4 436 M
+(    List **                 m_arrAdjLists;) s
+18.6 428 M (41:) s
+18.6 420 M (42:) s
+35.4 420 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 420 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 420 M
+(                     m_nEdges;) s
+18.6 412 M (43:) s
+35.4 412 M
+(};) s
+18.6 404 M (44:) s
+18.6 396 M (45:) s
+35.4 396 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 396 M
+(endif) s
+/F-gs-font 7 7 SF
+0 setgray
+60.6 396 M
+( ) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+64.8 396 M
+(/* ADJACENCYLIST_H_ */) s
+/F-gs-font 7 7 SF
+0 setgray
+_R
+S
+%%Trailer
+%%Pages: 1
+%%DocumentNeededResources: font Times-Roman Courier-Oblique Courier-Bold 
+%%+ font Courier Times-Bold 
+%%EOF

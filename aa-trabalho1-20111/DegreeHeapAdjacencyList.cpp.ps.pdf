@@ -1,0 +1,725 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 6089
+>>
+stream
+0.95 g
+/GS1 gs
+24 800 547 -18 re
+f
+0.7 g
+24 818 72 -36 re
+f
+BT
+/TT2 1 Tf
+12 0 0 12 38.666 802 Tm
+0 g
+0 Tc
+0 Tw
+(06/14/11)Tj
+-0.0552 -1.0667 TD
+(17:38:47)Tj
+ET
+0.7 g
+499 818 72 -36 re
+f
+BT
+/TT4 1 Tf
+28.8 0 0 28.8 526.9914 789.2 Tm
+1 g
+(1)Tj
+/TT6 1 Tf
+14 0 0 14 209.8496 786.5 Tm
+0 g
+(DegreeHeapAdjacencyList.cpp)Tj
+/TT8 1 Tf
+7 0 0 7 46.8 772 Tm
+[(1:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT8 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("DegreeHeapAdjacencyList.h")Tj
+/TT8 1 Tf
+0 g
+-7.2 -1.1429 TD
+[(2:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT8 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("VertexVectorAdjacencyList.h")Tj
+/TT8 1 Tf
+0 g
+-7.2 -1.1429 TD
+(3:)Tj
+T*
+(4:)Tj
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+1.8 0 TD
+(DegreeHeapAdjacencyList)Tj
+/TT8 1 Tf
+0 g
+13.8 0 TD
+(::DegreeHeapAdjacencyList\( \))Tj
+-15.6 -1.1429 TD
+[(5:)-599.8({)]TJ
+T*
+[(6:)-599.8(})]TJ
+T*
+(7:)Tj
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+1.8 0 TD
+(DegreeHeapAdjacencyList)Tj
+/TT8 1 Tf
+0 g
+13.8 0 TD
+(::òDegreeHeapAdjacencyList\( \))Tj
+-15.6 -1.1429 TD
+[(8:)-599.8({)]TJ
+T*
+[(9:)-599.8(    delete m_heap;)]TJ
+-0.6 -1.1429 TD
+[(10:)-599.7(})]TJ
+T*
+(11:)Tj
+T*
+(12:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(void)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( DegreeHeapAdjacencyList::Allocate\( )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+21.6 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( nVertex \))Tj
+-28.2 -1.1429 TD
+[(13:)-599.7({)]TJ
+T*
+[(14:)-599.7(    )]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(AdjacencyList)Tj
+/TT8 1 Tf
+0 g
+7.8 0 TD
+(::Allocate\( nVertex \);)Tj
+-12.6 -1.1429 TD
+[(15:)-599.7(    )]TJ
+T*
+[(16:)-599.7(    m_heap = new Heap\( nVertex \);)]TJ
+T*
+[(17:)-599.7(})]TJ
+T*
+(18:)Tj
+T*
+(19:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( DegreeHeapAdjacencyList::RemoveHighestDegreeVertex\( )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+31.8 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( debug \))Tj
+-37.8 -1.1429 TD
+[(20:)-599.7({)]TJ
+T*
+[(21:)-599.7(    )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+4.8 0 TD
+(// remove the highest degree vertex from heap)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(22:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> vertex;)Tj
+-15.6 -1.1429 TD
+[(23:)-599.7(    m_heap->removeFromHeap\( vertex \);)]TJ
+T*
+[(24:)-599.7(    )]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.8 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( iHighestDegreeVertex = vertex.first;)Tj
+-6.6 -1.1429 TD
+[(25:)-599.7(    )]TJ
+T*
+[(26:)-599.7(    List * neighbors = m_arrAdjLists[ iHighestDegreeVertex ];)]TJ
+T*
+[(27:)-599.7(    )]TJ
+T*
+[(28:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \( debug >= 2 \))Tj
+-6 -1.1429 TD
+[(29:)-599.7(    {)]TJ
+T*
+[(30:)-599.7(        fprintf\( stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+17.4 0 TD
+("  vertice %d tem %d vizinhos\\n")Tj
+/TT8 1 Tf
+0 g
+19.2 0 TD
+(,)Tj
+-36.6 -1.1429 TD
+[(31:)-599.7(                 iHighestDegreeVertex,)]TJ
+T*
+[(32:)-599.7(                 neighbors->size\(\) \);)]TJ
+T*
+[(33:)-599.7(    })]TJ
+T*
+[(34:)-599.7(    )]TJ
+T*
+[(35:)-599.7(    )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+4.8 0 TD
+(// decrease its neighborís degree)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(36:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+2.4 0 TD
+(for)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( \( ListNode * node = neighbors->getFirst\(\);)Tj
+-6.6 -1.1429 TD
+[(37:)-599.7(        node != NULL;)]TJ
+T*
+[(38:)-599.7(        node = node->next\(\)\))]TJ
+T*
+[(39:)-599.7(    {)]TJ
+T*
+[(40:)-599.7(        )]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+7.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( iNeighbor = node->getVertex\(\);)Tj
+-9 -1.1429 TD
+(41:)Tj
+T*
+[(42:)-599.7(        )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// update this vertexís neighborís list that this vertex is being removed)Tj
+/TT8 1 Tf
+-7.2 -1.1429 TD
+(43:)Tj
+0 g
+2.4 0 TD
+(        )Tj
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+4.8 0 TD
+(//m_arrAdjLists[ iNeighbor ]->erase\( iHighestDegreeVertex \);)Tj
+/TT8 1 Tf
+-7.2 -1.1429 TD
+(44:)Tj
+0 g
+T*
+[(45:)-599.7(        )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \( m_heap->HasVertex\( iNeighbor \) \))Tj
+-8.4 -1.1429 TD
+[(46:)-599.7(        {)]TJ
+T*
+[(47:)-599.7(            )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+9.6 0 TD
+(// remove edge from this vertex)Tj
+/TT8 1 Tf
+-9.6 -1.1429 TD
+(48:)Tj
+0 g
+2.4 0 TD
+(            m_nEdges --;)Tj
+-2.4 -1.1429 TD
+(49:)Tj
+T*
+[(50:)-599.7(            )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+9.6 0 TD
+(// decrement degree from neighbor)Tj
+/TT8 1 Tf
+-9.6 -1.1429 TD
+(51:)Tj
+0 g
+2.4 0 TD
+(            m_heap->DecrementDegree\( iNeighbor \);)Tj
+-2.4 -1.1429 TD
+[(52:)-599.7(        })]TJ
+T*
+[(53:)-599.7(    })]TJ
+T*
+[(54:)-599.7(    )]TJ
+T*
+[(55:)-599.7(    )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+4.8 0 TD
+(// remove edges to neighbors, and let the vertex linger)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(56:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+2.4 0 TD
+(//neighbors.clear\( \);)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(57:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+-2.4 -1.1429 TD
+[(58:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( iHighestDegreeVertex;)Tj
+-8.4 -1.1429 TD
+[(59:)-599.7(    )]TJ
+T*
+[(60:)-599.7(})]TJ
+T*
+(61:)Tj
+T*
+(62:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(void)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( DegreeHeapAdjacencyList::updateData\( \))Tj
+-4.8 -1.1429 TD
+[(63:)-599.7({)]TJ
+T*
+[(64:)-599.7(    )]TJ
+T*
+[(65:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(for)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(\( )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( i = 0; i < m_nVertex; i++ \))Tj
+-9.6 -1.1429 TD
+[(66:)-599.7(    {)]TJ
+T*
+[(67:)-599.7(        m_heap->insertOnHeap\( i, \()]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+22.8 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(\) m_arrAdjLists[i]->size\(\) \);)Tj
+-24.6 -1.1429 TD
+[(68:)-599.7(    })]TJ
+T*
+[(69:)-599.7(})]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+/TT8 7 0 R
+/TT10 8 0 R
+/TT12 9 0 R
+>>
+/ExtGState <<
+/GS1 10 0 R
+>>
+>>
+endobj
+10 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+12 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 676
+/Descent -250
+/Flags 262178
+/FontBBox [-168 -218 1000 935]
+/FontName /Times-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 461
+/StemH 139
+>>
+endobj
+13 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 262176
+/FontBBox [-170 -228 1003 962]
+/FontName /Helvetica-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 532
+/StemH 140
+>>
+endobj
+14 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+15 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+16 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+17 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 99
+/FontBBox [-28 -250 742 805]
+/FontName /Courier-Oblique
+/ItalicAngle -15
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 47
+/LastChar 58
+/Widths [278 500 500 0 500 500 0 500 500 500 0 333 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Bold
+/FontDescriptor 12 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 49
+/LastChar 49
+/Widths [556 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica-Bold
+/FontDescriptor 13 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 46
+/LastChar 121
+/Widths [250 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 722 0 0 722 0 0 0 722 0 0 0 611 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 444 0 444 500 444 0 500 0 278 278 0 0 0 
+500 0 500 0 333 389 278 0 0 0 0 500 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 14 0 R
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 152
+/Widths [600 600 0 600 0 0 0 0 600 600 600 600 600 600 600 0 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0 
+0 600 0 0 600 600 600 0 600 0 0 0 600 0 600 600 
+0 0 600 0 0 600 600 0 0 0 0 600 0 600 0 600 
+0 600 600 600 600 600 600 600 600 600 600 0 600 600 600 600 
+600 0 600 600 600 600 600 600 600 600 600 600 0 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 15 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 122
+/Widths [600 0 600 0 0 600 0 0 0 0 0 0 0 0 600 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 600 0 0 600 0 0 0 600 0 0 0 600 0 0 0 
+0 0 0 0 0 0 600 0 0 0 0 0 600 0 0 0 
+0 600 0 600 600 600 600 600 600 600 600 0 600 600 600 600 
+600 0 600 600 600 600 600 0 600 600 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 16 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 146
+/Widths [600 0 0 0 0 0 0 0 600 600 0 0 600 600 600 600 
+0 0 0 0 0 0 0 0 0 0 0 600 0 0 600 0 
+0 600 0 0 600 0 0 0 600 0 0 0 600 0 600 0 
+0 0 0 0 0 0 600 0 0 0 0 600 0 600 0 600 
+0 600 600 600 600 600 600 600 600 600 600 0 600 600 600 600 
+600 0 600 600 600 600 600 0 600 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Oblique
+/FontDescriptor 17 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 11 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+18 0 obj
+<<
+/S /D
+>>
+endobj
+19 0 obj
+<<
+/Nums [0 18 0 R ]
+>>
+endobj
+11 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R]
+/Count 1
+/MediaBox [0 0 595 842]
+>>
+endobj
+20 0 obj
+<<
+/CreationDate (D:20110614205003-03'00')
+/ModDate (D:20110614205003-03'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+21 0 obj
+<<
+/Type /Catalog
+/Pages 11 0 R
+/PageLabels 19 0 R
+>>
+endobj
+xref
+0 22
+0000000000 65535 f 
+0000009822 00000 n 
+0000000016 00000 n 
+0000006157 00000 n 
+0000007650 00000 n 
+0000007854 00000 n 
+0000008024 00000 n 
+0000008380 00000 n 
+0000008921 00000 n 
+0000009337 00000 n 
+0000006310 00000 n 
+0000009971 00000 n 
+0000006451 00000 n 
+0000006653 00000 n 
+0000006859 00000 n 
+0000007056 00000 n 
+0000007247 00000 n 
+0000007449 00000 n 
+0000009903 00000 n 
+0000009931 00000 n 
+0000010053 00000 n 
+0000010176 00000 n 
+trailer
+<<
+/Size 22
+/Root 21 0 R
+/Info 20 0 R
+/ID [<ddf9538d89822f438b253369f9c1ffb2><ddf9538d89822f438b253369f9c1ffb2>]
+>>
+startxref
+10246
+%%EOF

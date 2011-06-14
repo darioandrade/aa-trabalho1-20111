@@ -1,0 +1,566 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 3816
+>>
+stream
+0.95 g
+/GS1 gs
+24 800 547 -18 re
+f
+0.7 g
+24 818 72 -36 re
+f
+BT
+/TT2 1 Tf
+12 0 0 12 38.666 802 Tm
+0 g
+0 Tc
+0 Tw
+(06/11/11)Tj
+-0.0552 -1.0667 TD
+(13:09:23)Tj
+ET
+0.7 g
+499 818 72 -36 re
+f
+BT
+/TT4 1 Tf
+28.8 0 0 28.8 526.9914 789.2 Tm
+1 g
+(1)Tj
+/TT6 1 Tf
+14 0 0 14 249.4946 786.5 Tm
+0 g
+(readwritetest.cpp)Tj
+/TT8 1 Tf
+7 0 0 7 46.8 772 Tm
+(1:)Tj
+0 -1.1429 TD
+[(2:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT8 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+(<stdio.h>)Tj
+/TT8 1 Tf
+0 g
+-7.2 -1.1429 TD
+(3:)Tj
+T*
+[(4:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT8 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("GeraGrafo.h")Tj
+/TT8 1 Tf
+0 g
+-7.2 -1.1429 TD
+[(5:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT8 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("DegreeVectorAdjacencyList.h")Tj
+/TT8 1 Tf
+0 g
+-7.2 -1.1429 TD
+(6:)Tj
+T*
+[(7:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(define)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( )Tj
+0.722 0.525 0.043 rg
+0.6 0 TD
+(NVERTEX)Tj
+0 g
+4.2 0 TD
+( 10)Tj
+-10.8 -1.1429 TD
+[(8:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(define)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( )Tj
+0.722 0.525 0.043 rg
+0.6 0 TD
+(FILENAME_GRAFO)Tj
+0 g
+8.4 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("testedegrafo_gerado.grafo")Tj
+/TT8 1 Tf
+0 g
+-15.6 -1.1429 TD
+[(9:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(define)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( )Tj
+0.722 0.525 0.043 rg
+0.6 0 TD
+(FILENAME_GRAFO_LIDO)Tj
+0 g
+11.4 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("testedegrafo_lido.grafo")Tj
+/TT8 1 Tf
+0 g
+-19.2 -1.1429 TD
+(10:)Tj
+T*
+(11:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( )Tj
+/TT10 1 Tf
+0 0 1 rg
+0.6 0 TD
+(main)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+(\( )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( argc, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(char)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( ** argv \))Tj
+-16.8 -1.1429 TD
+[(12:)-599.7({)]TJ
+T*
+[(13:)-599.7(    )]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.8 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( debug = 2;)Tj
+-6.6 -1.1429 TD
+(14:)Tj
+T*
+[(15:)-599.7(    fprintf\( stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+15 0 TD
+("Gerando grafo com %d vertices\\n")Tj
+/TT8 1 Tf
+0 g
+19.8 0 TD
+(, NVERTEX \);)Tj
+-34.8 -1.1429 TD
+(16:)Tj
+T*
+[(17:)-599.7(    FILE * f = fopen\( FILENAME_GRAFO, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+25.2 0 TD
+("w")Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( \);)Tj
+-27 -1.1429 TD
+(18:)Tj
+T*
+[(19:)-599.7(    GeraGrafo\( f, NVERTEX, 1, debug \);)]TJ
+T*
+(20:)Tj
+T*
+[(21:)-599.7(    fclose\( f \);)]TJ
+T*
+(22:)Tj
+T*
+[(23:)-599.7(    f = fopen\( FILENAME_GRAFO, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+21 0 TD
+("r")Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( \);)Tj
+-22.8 -1.1429 TD
+(24:)Tj
+T*
+[(25:)-599.7(    DegreeVectorAdjacencyList grafo;)]TJ
+T*
+(26:)Tj
+T*
+[(27:)-599.7(    fprintf\( stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+15 0 TD
+("lendo arquivo do grafo gerado: %s\\n")Tj
+/TT8 1 Tf
+0 g
+22.2 0 TD
+(, FILENAME_GRAFO \);)Tj
+-37.2 -1.1429 TD
+(28:)Tj
+T*
+[(29:)-599.7(    grafo.read\( f, debug \);)]TJ
+T*
+(30:)Tj
+T*
+[(31:)-599.7(    fclose\( f \);)]TJ
+T*
+(32:)Tj
+T*
+[(33:)-599.7(    f = fopen\( FILENAME_GRAFO_LIDO, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+24 0 TD
+("w")Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( \);)Tj
+-25.8 -1.1429 TD
+(34:)Tj
+T*
+[(35:)-599.7(    fprintf\( stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+15 0 TD
+("escrevendo arquivo do grafo lido: %s\\n")Tj
+/TT8 1 Tf
+0 g
+24 0 TD
+(, FILENAME_GRAFO_LIDO \);)Tj
+-39 -1.1429 TD
+(36:)Tj
+T*
+[(37:)-599.7(    grafo.write\( f \);)]TJ
+T*
+(38:)Tj
+T*
+[(39:)-599.7(    fclose \( f \);)]TJ
+T*
+(40:)Tj
+T*
+[(41:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( 0;)Tj
+-8.4 -1.1429 TD
+[(42:)-599.7(})]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+/TT8 7 0 R
+/TT10 8 0 R
+>>
+/ExtGState <<
+/GS1 9 0 R
+>>
+>>
+endobj
+9 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+11 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 676
+/Descent -250
+/Flags 262178
+/FontBBox [-168 -218 1000 935]
+/FontName /Times-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 461
+/StemH 139
+>>
+endobj
+12 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 262176
+/FontBBox [-170 -228 1003 962]
+/FontName /Helvetica-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 532
+/StemH 140
+>>
+endobj
+13 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+14 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+15 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 47
+/LastChar 58
+/Widths [278 500 500 500 500 0 0 500 0 0 500 333 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Bold
+/FontDescriptor 11 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 49
+/LastChar 49
+/Widths [556 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica-Bold
+/FontDescriptor 12 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 46
+/LastChar 119
+/Widths [250 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 444 0 444 500 444 0 0 0 278 0 0 0 0 
+0 0 500 0 333 389 278 0 0 722 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 13 0 R
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 125
+/Widths [600 0 0 600 0 0 0 0 600 600 600 0 600 0 600 0 
+600 600 600 600 600 600 600 600 600 600 600 600 0 600 0 0 
+0 600 0 0 600 600 600 600 0 600 0 0 600 600 600 600 
+0 0 600 0 600 0 600 0 600 0 0 0 0 0 0 600 
+0 600 600 600 600 600 600 600 0 600 600 0 600 0 600 600 
+600 0 600 600 600 600 600 600 0 600 0 600 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 14 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 121
+/Widths [600 0 600 0 0 600 0 0 0 0 0 0 0 0 600 0 
+0 0 0 0 0 0 0 0 0 0 600 0 600 0 600 0 
+0 600 0 0 600 0 0 600 0 0 0 0 600 0 0 0 
+0 0 0 0 0 0 600 0 0 0 0 0 600 0 0 600 
+0 600 0 600 600 600 600 600 600 600 600 0 600 600 600 600 
+0 600 600 600 600 600 600 600 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 15 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 10 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+16 0 obj
+<<
+/S /D
+>>
+endobj
+17 0 obj
+<<
+/Nums [0 16 0 R ]
+>>
+endobj
+10 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R]
+/Count 1
+/MediaBox [0 0 595 842]
+>>
+endobj
+18 0 obj
+<<
+/CreationDate (D:20110614205006-03'00')
+/ModDate (D:20110614205006-03'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+19 0 obj
+<<
+/Type /Catalog
+/Pages 10 0 R
+/PageLabels 17 0 R
+>>
+endobj
+xref
+0 20
+0000000000 65535 f 
+0000006759 00000 n 
+0000000016 00000 n 
+0000003884 00000 n 
+0000005162 00000 n 
+0000005364 00000 n 
+0000005534 00000 n 
+0000005872 00000 n 
+0000006339 00000 n 
+0000004024 00000 n 
+0000006908 00000 n 
+0000004164 00000 n 
+0000004366 00000 n 
+0000004572 00000 n 
+0000004769 00000 n 
+0000004960 00000 n 
+0000006840 00000 n 
+0000006868 00000 n 
+0000006990 00000 n 
+0000007113 00000 n 
+trailer
+<<
+/Size 20
+/Root 19 0 R
+/Info 18 0 R
+/ID [<5a69773de0ba96a8230cb25e7f8cafbf><5a69773de0ba96a8230cb25e7f8cafbf>]
+>>
+startxref
+7183
+%%EOF
