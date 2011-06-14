@@ -23,7 +23,6 @@ private:
     int m_lastHighestDegree;
     List ** m_vectorVertex;
 	ListNode ** m_elementList;
-	ListNode ** m_previousElementList;
 };
 
 #endif /* DEGREEVECTORADJACENCYLIST_H_ */
