@@ -99,8 +99,9 @@ int DegreeVectorAdjacencyList::RemoveHighestDegreeVertex( int debug )
         int iNeighbor = node->getContent();
 
         // update this vertex's neighbor's list that this vertex is being removed
-        // DATS: Nao eh mais necessario tirar o vizinho da listsa
-        // de adjacencias do vertice que estamos tirando
+        // DATS: Nao eh mais necessario tirar o vertice da lista de adjacencias
+        // do vizinho, uma vez que o vetor de graus (que de fato é consultado) 
+        // já é decrementado
         //m_arrAdjLists[ iNeighbor ]->erase( iHighestDegreeVertex );
 
         // remove edge from this vertex
