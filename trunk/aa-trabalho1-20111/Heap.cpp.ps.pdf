@@ -1,0 +1,1881 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 7762
+>>
+stream
+0.95 g
+/GS1 gs
+24 800 547 -18 re
+f
+0.7 g
+24 818 72 -36 re
+f
+BT
+/TT2 1 Tf
+12 0 0 12 38.666 802 Tm
+0 g
+0 Tc
+0 Tw
+(06/14/11)Tj
+-0.0552 -1.0667 TD
+(17:50:18)Tj
+ET
+0.7 g
+499 818 72 -36 re
+f
+BT
+/TT4 1 Tf
+28.8 0 0 28.8 526.9914 789.2 Tm
+1 g
+(1)Tj
+/TT6 1 Tf
+14 0 0 14 270.874 786.5 Tm
+0 g
+(Heap.cpp)Tj
+/TT8 1 Tf
+7 0 0 7 46.8 772 Tm
+[(1:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT8 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+(<math.h>)Tj
+/TT8 1 Tf
+0 g
+-7.2 -1.1429 TD
+(2:)Tj
+T*
+[(3:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT8 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("Heap.h")Tj
+/TT8 1 Tf
+0 g
+-7.2 -1.1429 TD
+(4:)Tj
+T*
+(5:)Tj
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+1.8 0 TD
+(Heap)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+(::Heap\()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( nVertex\))Tj
+-10.2 -1.1429 TD
+[(6:)-599.8(:)]TJ
+T*
+[(7:)-599.8(    m_nVertex\(nVertex\),)]TJ
+T*
+[(8:)-599.8(    m_heapVector\(NULL\),)]TJ
+T*
+[(9:)-599.8(    m_indexerHeap\(NULL\),)]TJ
+-0.6 -1.1429 TD
+[(10:)-599.7(    m_nextAvailableSlot\(0\))]TJ
+T*
+[(11:)-599.7({)]TJ
+T*
+[(12:)-599.7(    allocate\(\);)]TJ
+T*
+[(13:)-599.7(})]TJ
+T*
+(14:)Tj
+T*
+(15:)Tj
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(Heap)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+(::òHeap\(\))Tj
+-4.8 -1.1429 TD
+[(16:)-599.7({)]TJ
+T*
+[(17:)-599.7(    delete m_heapVector;)]TJ
+T*
+[(18:)-599.7(    delete m_indexerHeap;)]TJ
+T*
+[(19:)-599.7(})]TJ
+T*
+(20:)Tj
+T*
+(21:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(void)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( Heap::allocate\(\))Tj
+-4.8 -1.1429 TD
+[(22:)-599.7({)]TJ
+T*
+[(23:)-599.7(    m_heapVector = new std::pair<)]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+22.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(>[ m_nVertex ];)Tj
+-27 -1.1429 TD
+[(24:)-599.7(    m_indexerHeap = new )]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+16.8 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+([ m_nVertex ];)Tj
+-18.6 -1.1429 TD
+[(25:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(for)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( \()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( i = 0; i < m_nVertex; i++\))Tj
+-9.6 -1.1429 TD
+[(26:)-599.7(    {)]TJ
+T*
+[(27:)-599.7(        m_indexerHeap[i] = -1;)]TJ
+T*
+[(28:)-599.7(    })]TJ
+T*
+[(29:)-599.7(})]TJ
+T*
+(30:)Tj
+T*
+[(31:)-599.7( bool Heap::removeFromHeap\(std::pair<)]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+24.6 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> & root\))Tj
+-29.4 -1.1429 TD
+[(32:)-599.7({)]TJ
+T*
+[(33:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(m_nextAvailableSlot > 0\) {)Tj
+-6 -1.1429 TD
+[(34:)-599.7(        root = m_heapVector[0];)]TJ
+T*
+(35:)Tj
+T*
+[(36:)-599.7(        )]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+7.2 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> lastInserted = m_heapVector[m_nextAvailableSlot - 1];)Tj
+-18 -1.1429 TD
+(37:)Tj
+T*
+[(38:)-599.7(        m_heapVector[0] = lastInserted;)]TJ
+T*
+(39:)Tj
+T*
+[(40:)-599.7(        )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// element ja esta alocado no heapvector, para zerar eh so setar zero)Tj
+/TT8 1 Tf
+-7.2 -1.1429 TD
+(41:)Tj
+0 g
+2.4 0 TD
+(        m_heapVector[m_nextAvailableSlot - 1].first = 0;)Tj
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+33.6 0 TD
+(// = *\(new std::pair<int, int>\(0, 0\)\);)Tj
+/TT8 1 Tf
+-36 -1.1429 TD
+(42:)Tj
+0 g
+2.4 0 TD
+(        m_heapVector[m_nextAvailableSlot - 1].second = 0;)Tj
+-2.4 -1.1429 TD
+[(43:)-599.7(        m_nextAvailableSlot--;)]TJ
+T*
+(44:)Tj
+T*
+[(45:)-599.7(        )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// remove vertex from heapís index)Tj
+/TT8 1 Tf
+-7.2 -1.1429 TD
+(46:)Tj
+0 g
+2.4 0 TD
+(        m_indexerHeap[root.first] = -1;)Tj
+-2.4 -1.1429 TD
+(47:)Tj
+T*
+[(48:)-599.7(        bubleDownElement\(0\);)]TJ
+T*
+(49:)Tj
+T*
+[(50:)-599.7(    } )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+6 0 TD
+(else)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( {)Tj
+-8.4 -1.1429 TD
+[(51:)-599.7(        fprintf\( stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+17.4 0 TD
+("Error removing from empty heap.\\n")Tj
+/TT8 1 Tf
+0 g
+21 0 TD
+( \);)Tj
+-38.4 -1.1429 TD
+[(52:)-599.7(        )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( false;)Tj
+-10.8 -1.1429 TD
+[(53:)-599.7(    })]TJ
+T*
+(54:)Tj
+T*
+[(55:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( true;)Tj
+-8.4 -1.1429 TD
+[(56:)-599.7(})]TJ
+T*
+(57:)Tj
+T*
+[(58:)-599.7(bool Heap::HasVertex\()]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+15 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( iVertex\) )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+6 0 TD
+(const)Tj
+/TT8 1 Tf
+0 g
+-22.8 -1.1429 TD
+[(59:)-599.7({)]TJ
+T*
+[(60:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( m_indexerHeap[iVertex] != -1;)Tj
+-8.4 -1.1429 TD
+[(61:)-599.7(})]TJ
+T*
+(62:)Tj
+T*
+(63:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(void)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( Heap::insertOnHeap\()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+12 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( iVertex, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+6 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( degree\))Tj
+-26.4 -1.1429 TD
+[(64:)-599.7({   )]TJ
+T*
+[(65:)-599.7(    m_heapVector[m_nextAvailableSlot].first = iVertex;)]TJ
+T*
+[(66:)-599.7(    m_heapVector[m_nextAvailableSlot].second = degree;)]TJ
+T*
+(67:)Tj
+T*
+[(68:)-599.7(    )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+4.8 0 TD
+(// Fill indexer vector)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(69:)Tj
+0 g
+2.4 0 TD
+(    m_indexerHeap[iVertex] =  m_nextAvailableSlot;)Tj
+-2.4 -1.1429 TD
+(70:)Tj
+T*
+[(71:)-599.7(    )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+4.8 0 TD
+(// we may need to use our current status in bubbleUpElement,)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(72:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+2.4 0 TD
+(// so we need to increment before calling the method below)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(73:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+2.4 0 TD
+(// do not move position)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(74:)Tj
+0 g
+2.4 0 TD
+(    m_nextAvailableSlot++;)Tj
+-2.4 -1.1429 TD
+(75:)Tj
+T*
+[(76:)-599.7(    bubleUpElement\(m_nextAvailableSlot - 1\);)]TJ
+T*
+[(77:)-599.7(})]TJ
+T*
+(78:)Tj
+T*
+(79:)Tj
+T*
+(80:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(void)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( Heap::DecrementDegree\( )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+14.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( iVertex \))Tj
+-21 -1.1429 TD
+[(81:)-599.7({)]TJ
+T*
+[(82:)-599.7(    m_heapVector[ m_indexerHeap[iVertex] ].second--;)]TJ
+T*
+[(83:)-599.7(    bubleDownElement\(m_indexerHeap[iVertex]\);)]TJ
+T*
+[(84:)-599.7(})]TJ
+T*
+(85:)Tj
+T*
+(86:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+2.4 0 TD
+(void)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( Heap::bubleUpElement\()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+13.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( iSlotIndex\))Tj
+-19.8 -1.1429 TD
+[(87:)-599.7({)]TJ
+T*
+[(88:)-599.7(    )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+4.8 0 TD
+(// First element donít have father)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(89:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+2.4 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(iSlotIndex <= 0\) {)Tj
+-6 -1.1429 TD
+[(90:)-599.7(        )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+(;)Tj
+-10.8 -1.1429 TD
+[(91:)-599.7(    })]TJ
+T*
+(92:)Tj
+T*
+[(93:)-599.7(    )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+4.8 0 TD
+(// swap element with father)Tj
+/TT8 1 Tf
+-4.8 -1.1429 TD
+(94:)Tj
+0 g
+2.4 0 TD
+(    )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+2.4 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(swapWithFather\(iSlotIndex\)\) {)Tj
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+/TT8 7 0 R
+/TT10 8 0 R
+/TT12 9 0 R
+>>
+/ExtGState <<
+/GS1 10 0 R
+>>
+>>
+endobj
+13 0 obj
+<<
+/Length 9391
+>>
+stream
+0.95 g
+/GS1 gs
+24 800 547 -18 re
+f
+0.7 g
+24 818 72 -36 re
+f
+BT
+/TT2 1 Tf
+12 0 0 12 38.666 802 Tm
+0 g
+0 Tc
+0 Tw
+(06/14/11)Tj
+-0.0552 -1.0667 TD
+(17:50:18)Tj
+ET
+0.7 g
+499 818 72 -36 re
+f
+BT
+/TT4 1 Tf
+28.8 0 0 28.8 526.9914 789.2 Tm
+1 g
+(2)Tj
+/TT6 1 Tf
+14 0 0 14 270.874 786.5 Tm
+0 g
+(Heap.cpp)Tj
+/TT8 1 Tf
+7 0 0 7 42.6 772 Tm
+[(95:)-599.7(        )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+7.2 0 TD
+(// if we had an inversion, call recursively for the father)Tj
+/TT8 1 Tf
+-7.2 -1.1429 TD
+(96:)Tj
+0 g
+2.4 0 TD
+(        bubleUpElement\(\(iSlotIndex - 1\) / 2\);)Tj
+-2.4 -1.1429 TD
+[(97:)-599.7(    })]TJ
+T*
+[(98:)-599.7(})]TJ
+T*
+(99:)Tj
+-0.6 -1.1429 TD
+[(100:)-599.6(bool Heap::swapWithFather\()]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+18.6 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( iSlotIndex\))Tj
+-20.4 -1.1429 TD
+[(101:)-599.6({)]TJ
+T*
+[(102:)-599.6(    )]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+5.4 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> element = m_heapVector[iSlotIndex];)Tj
+-16.2 -1.1429 TD
+(103:)Tj
+T*
+[(104:)-599.6(    )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+5.4 0 TD
+(// Compare with parent)Tj
+/TT8 1 Tf
+-5.4 -1.1429 TD
+(105:)Tj
+0 g
+3 0 TD
+(    )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+2.4 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(element.second > m_heapVector[\(iSlotIndex - 1\) / 2].second\) {)Tj
+-6.6 -1.1429 TD
+(106:)Tj
+T*
+[(107:)-599.6(        )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+7.8 0 TD
+(// swap with father)Tj
+/TT8 1 Tf
+-7.8 -1.1429 TD
+(108:)Tj
+0 g
+3 0 TD
+(        )Tj
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+4.8 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> father = m_heapVector[\(iSlotIndex - 1\) / 2];)Tj
+-18.6 -1.1429 TD
+(109:)Tj
+T*
+[(110:)-599.6(        m_heapVector[\(iSlotIndex - 1\) / 2] = element;)]TJ
+T*
+[(111:)-599.6(        m_heapVector[iSlotIndex] = father;)]TJ
+T*
+(112:)Tj
+T*
+[(113:)-599.6(        m_indexerHeap[ element.first ] = \(iSlotIndex - 1\) / 2;)]TJ
+T*
+[(114:)-599.6(        m_indexerHeap[ father.first ] = iSlotIndex;)]TJ
+T*
+[(115:)-599.6(        )]TJ
+T*
+[(116:)-599.6(        )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( true;)Tj
+-11.4 -1.1429 TD
+[(117:)-599.6(    })]TJ
+T*
+(118:)Tj
+T*
+[(119:)-599.6(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( false;)Tj
+-9 -1.1429 TD
+[(120:)-599.6(})]TJ
+T*
+(121:)Tj
+T*
+(122:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+3 0 TD
+(void)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( Heap::bubleDownElement\()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+14.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( iSlotIndex\))Tj
+-21.6 -1.1429 TD
+[(123:)-599.6({)]TJ
+T*
+[(124:)-599.6(    )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+5.4 0 TD
+(// Last Nodes already had passed)Tj
+/TT8 1 Tf
+-5.4 -1.1429 TD
+(125:)Tj
+0 g
+3 0 TD
+(    )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+2.4 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(iSlotIndex >= m_nextAvailableSlot\) {)Tj
+-6.6 -1.1429 TD
+[(126:)-599.6(        )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+(;)Tj
+-11.4 -1.1429 TD
+[(127:)-599.6(    })]TJ
+T*
+(128:)Tj
+T*
+[(129:)-599.6(    )]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+5.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( swapIndex = swapWithChildren\(iSlotIndex\);)Tj
+-7.2 -1.1429 TD
+(130:)Tj
+T*
+[(131:)-599.6(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(swapIndex == 1\) {)Tj
+-6.6 -1.1429 TD
+[(132:)-599.6(        bubleDownElement\(2 * iSlotIndex + 1\);)]TJ
+T*
+[(133:)-599.6(    } )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+6.6 0 TD
+(else)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(swapIndex == 2\) {)Tj
+-10.8 -1.1429 TD
+[(134:)-599.6(        bubleDownElement\(2 * iSlotIndex + 2\);)]TJ
+T*
+[(135:)-599.6(    })]TJ
+T*
+(136:)Tj
+T*
+[(137:)-599.6(})]TJ
+T*
+(138:)Tj
+T*
+(139:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+3 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( Heap::swapWithChildren\()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+14.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( iSlotIndex\))Tj
+-21 -1.1429 TD
+[(140:)-599.6({)]TJ
+T*
+[(141:)-599.6(    )]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+5.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( higher = -1;)Tj
+-7.2 -1.1429 TD
+[(142:)-599.6(    )]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+5.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( result = -1;)Tj
+-7.2 -1.1429 TD
+(143:)Tj
+T*
+[(144:)-599.6(    )]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+5.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( leftChildIndex = 2 * iSlotIndex + 1;)Tj
+-7.2 -1.1429 TD
+[(145:)-599.6(    )]TJ
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+5.4 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( rightChildIndex = 2 * iSlotIndex + 2;)Tj
+-7.2 -1.1429 TD
+(146:)Tj
+T*
+[(147:)-599.6(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+(\(\(leftChildIndex < m_nextAvailableSlot\)  && \(rightChildIndex < m_nextAvailableSlot\)\) {)Tj
+-6.6 -1.1429 TD
+[(148:)-599.6(        )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(m_heapVector[iSlotIndex].second < m_heapVector[leftChildIndex].second &&)Tj
+-9 -1.1429 TD
+[(149:)-599.6(            m_heapVector[iSlotIndex].second < m_heapVector[rightChildIndex].second\) {)]TJ
+T*
+[(150:)-599.6(            )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+10.2 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(m_heapVector[leftChildIndex].second > m_heapVector[rightChildIndex].second\) {)Tj
+-11.4 -1.1429 TD
+[(151:)-599.6(                higher = 2 * iSlotIndex + 1;)]TJ
+T*
+[(152:)-599.6(                result = 1;)]TJ
+T*
+(153:)Tj
+T*
+[(154:)-599.6(            } )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+11.4 0 TD
+(else)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+0.6 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(m_heapVector[rightChildIndex].second > m_heapVector[leftChildIndex].second\) {)Tj
+-15.6 -1.1429 TD
+[(155:)-599.6(                higher = 2 * iSlotIndex + 2;)]TJ
+T*
+[(156:)-599.6(                result = 2;)]TJ
+T*
+[(157:)-599.6(            })]TJ
+T*
+[(158:)-599.6(        })]TJ
+T*
+(159:)Tj
+T*
+[(160:)-599.6(        )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(higher != -1\) {)Tj
+-9 -1.1429 TD
+[(161:)-599.6(            )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+10.2 0 TD
+(// swap with child)Tj
+/TT8 1 Tf
+-10.2 -1.1429 TD
+(162:)Tj
+0 g
+3 0 TD
+(            )Tj
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+7.2 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> child = m_heapVector[higher];)Tj
+-21 -1.1429 TD
+[(163:)-599.6(            )]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+10.2 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> element = m_heapVector[iSlotIndex];)Tj
+-21 -1.1429 TD
+(164:)Tj
+T*
+[(165:)-599.6(            m_heapVector[higher] = m_heapVector[iSlotIndex];)]TJ
+T*
+[(166:)-599.6(            m_heapVector[iSlotIndex] = child;)]TJ
+T*
+(167:)Tj
+T*
+[(168:)-599.6(            m_indexerHeap[ element.first ] = higher;)]TJ
+T*
+[(169:)-599.6(            m_indexerHeap[ child.first ] = iSlotIndex;)]TJ
+T*
+(170:)Tj
+T*
+[(171:)-599.6(            )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+10.2 0 TD
+(// 1 indicates that we swapped with left child)Tj
+/TT8 1 Tf
+-10.2 -1.1429 TD
+(172:)Tj
+0 g
+3 0 TD
+(            )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( result;)Tj
+-13.8 -1.1429 TD
+[(173:)-599.6(        })]TJ
+T*
+[(174:)-599.6(    })]TJ
+T*
+(175:)Tj
+T*
+[(176:)-599.6(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(leftChildIndex < m_nextAvailableSlot\) {)Tj
+-6.6 -1.1429 TD
+[(177:)-599.6(        )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+7.8 0 TD
+(// Compare with left child)Tj
+/TT8 1 Tf
+-7.8 -1.1429 TD
+(178:)Tj
+0 g
+3 0 TD
+(        )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(m_heapVector[iSlotIndex].second < m_heapVector[leftChildIndex].second\) {)Tj
+-9 -1.1429 TD
+[(179:)-599.6(            )]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+10.2 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> element = m_heapVector[iSlotIndex];)Tj
+-21 -1.1429 TD
+[(180:)-599.6(            )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+10.2 0 TD
+(// swap with child)Tj
+/TT8 1 Tf
+-10.2 -1.1429 TD
+(181:)Tj
+0 g
+3 0 TD
+(            )Tj
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+7.2 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> child = m_heapVector[leftChildIndex];)Tj
+-21 -1.1429 TD
+(182:)Tj
+T*
+[(183:)-599.6(            m_heapVector[leftChildIndex] = m_heapVector[iSlotIndex];)]TJ
+T*
+[(184:)-599.6(            m_heapVector[iSlotIndex] = child;)]TJ
+T*
+(185:)Tj
+T*
+[(186:)-599.6(            m_indexerHeap[ element.first ] = leftChildIndex;)]TJ
+T*
+[(187:)-599.6(            m_indexerHeap[ child.first ] = iSlotIndex;)]TJ
+T*
+(188:)Tj
+ET
+endstream
+endobj
+14 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+/TT8 7 0 R
+/TT10 8 0 R
+/TT12 9 0 R
+>>
+/ExtGState <<
+/GS1 10 0 R
+>>
+>>
+endobj
+16 0 obj
+<<
+/Length 4119
+>>
+stream
+0.95 g
+/GS1 gs
+24 800 547 -18 re
+f
+0.7 g
+24 818 72 -36 re
+f
+BT
+/TT2 1 Tf
+12 0 0 12 38.666 802 Tm
+0 g
+0 Tc
+0 Tw
+(06/14/11)Tj
+-0.0552 -1.0667 TD
+(17:50:18)Tj
+ET
+0.7 g
+499 818 72 -36 re
+f
+BT
+/TT4 1 Tf
+28.8 0 0 28.8 526.9914 789.2 Tm
+1 g
+(3)Tj
+/TT6 1 Tf
+14 0 0 14 270.874 786.5 Tm
+0 g
+(Heap.cpp)Tj
+/TT8 1 Tf
+7 0 0 7 38.4 772 Tm
+[(189:)-599.6(            )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+10.2 0 TD
+(// 1 indicates that we swapped with left child)Tj
+/TT8 1 Tf
+-10.2 -1.1429 TD
+(190:)Tj
+0 g
+3 0 TD
+(            )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( 1;)Tj
+-13.8 -1.1429 TD
+[(191:)-599.6(        })]TJ
+T*
+[(192:)-599.6(    })]TJ
+T*
+(193:)Tj
+T*
+[(194:)-599.6(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+( \(rightChildIndex < m_nextAvailableSlot\) {)Tj
+-6.6 -1.1429 TD
+[(195:)-599.6(        )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.8 0 TD
+(if)Tj
+/TT8 1 Tf
+0 g
+1.2 0 TD
+(\(m_heapVector[iSlotIndex].second < m_heapVector[rightChildIndex].second\) {)Tj
+-9 -1.1429 TD
+[(196:)-599.6(            )]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+10.2 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> element = m_heapVector[iSlotIndex];)Tj
+-21 -1.1429 TD
+[(197:)-599.6(            )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+10.2 0 TD
+(// swap with child)Tj
+/TT8 1 Tf
+-10.2 -1.1429 TD
+(198:)Tj
+0 g
+3 0 TD
+(            )Tj
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+7.2 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> child = m_heapVector[rightChildIndex];)Tj
+-21 -1.1429 TD
+(199:)Tj
+T*
+[(200:)-599.6(            m_heapVector[rightChildIndex] = m_heapVector[iSlotIndex];)]TJ
+T*
+[(201:)-599.6(            m_heapVector[iSlotIndex] = child;)]TJ
+T*
+(202:)Tj
+T*
+[(203:)-599.6(            m_indexerHeap[ element.first ] = rightChildIndex;)]TJ
+T*
+[(204:)-599.6(            m_indexerHeap[ child.first ] = iSlotIndex;)]TJ
+T*
+(205:)Tj
+T*
+[(206:)-599.6(            )]TJ
+/TT12 1 Tf
+0.698 0.133 0.133 rg
+10.2 0 TD
+(// 1 indicates that we swapped with left child)Tj
+/TT8 1 Tf
+-10.2 -1.1429 TD
+(207:)Tj
+0 g
+3 0 TD
+(            )Tj
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+7.2 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( 2;)Tj
+-13.8 -1.1429 TD
+[(208:)-599.6(        })]TJ
+T*
+[(209:)-599.6(    })]TJ
+T*
+(210:)Tj
+T*
+[(211:)-599.6(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( 0;)Tj
+-9 -1.1429 TD
+[(212:)-599.6(})]TJ
+T*
+(213:)Tj
+T*
+(214:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+3 0 TD
+(void)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( Heap::print\(\))Tj
+-5.4 -1.1429 TD
+[(215:)-599.6({)]TJ
+T*
+[(216:)-599.6(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+15 0 TD
+("Vertex: \\n")Tj
+/TT8 1 Tf
+0 g
+7.2 0 TD
+(\);)Tj
+-22.2 -1.1429 TD
+[(217:)-599.6(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(for)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(\()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+0.6 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( i = 0; i < m_nVertex; i++\) {)Tj
+-9.6 -1.1429 TD
+[(218:)-599.6(        fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+17.4 0 TD
+(" %d ")Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+(, m_heapVector[i].first\);)Tj
+-21 -1.1429 TD
+[(219:)-599.6(    })]TJ
+T*
+(220:)Tj
+T*
+[(221:)-599.6(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+15 0 TD
+("\\nDegrees: \\n")Tj
+/TT8 1 Tf
+0 g
+9 0 TD
+(\);)Tj
+-24 -1.1429 TD
+[(222:)-599.6(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+5.4 0 TD
+(for)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(\()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+0.6 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( i = 0; i < m_nVertex; i++\) {)Tj
+-9.6 -1.1429 TD
+[(223:)-599.6(        fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+17.4 0 TD
+(" %d ")Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+(, m_heapVector[i].second\);)Tj
+-21 -1.1429 TD
+[(224:)-599.6(    })]TJ
+T*
+[(225:)-599.6(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+15 0 TD
+("\\n")Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+(\);)Tj
+-17.4 -1.1429 TD
+[(226:)-599.6(})]TJ
+ET
+endstream
+endobj
+17 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+/TT8 7 0 R
+/TT10 8 0 R
+/TT12 9 0 R
+>>
+/ExtGState <<
+/GS1 10 0 R
+>>
+>>
+endobj
+10 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+18 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 676
+/Descent -250
+/Flags 262178
+/FontBBox [-168 -218 1000 935]
+/FontName /Times-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 461
+/StemH 139
+>>
+endobj
+19 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 262176
+/FontBBox [-170 -228 1003 962]
+/FontName /Helvetica-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 532
+/StemH 140
+>>
+endobj
+20 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+21 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+22 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+23 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 99
+/FontBBox [-28 -250 742 805]
+/FontName /Courier-Oblique
+/ItalicAngle -15
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 47
+/LastChar 58
+/Widths [278 500 500 0 0 500 500 500 500 500 0 333 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Bold
+/FontDescriptor 18 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 49
+/LastChar 51
+/Widths [556 556 556 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica-Bold
+/FontDescriptor 19 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 46
+/LastChar 112
+/Widths [250 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 722 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 444 0 444 0 444 0 0 0 0 0 0 0 0 
+0 0 500 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 20 0 R
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 152
+/Widths [600 600 0 600 0 0 600 0 600 600 600 600 600 600 600 600 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0 
+0 600 0 600 600 600 600 0 600 600 0 0 600 0 600 600 
+0 0 0 600 0 600 600 600 0 0 0 600 0 600 0 600 
+0 600 600 600 600 600 600 600 600 600 0 0 600 600 600 600 
+600 0 600 600 600 600 600 600 600 0 0 600 0 600 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 21 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 121
+/Widths [600 0 600 0 0 600 0 0 0 0 0 0 0 0 600 0 
+0 0 0 0 0 0 0 0 0 0 600 0 600 0 600 0 
+0 0 0 0 600 600 0 0 600 0 0 0 0 0 0 0 
+0 0 0 0 0 0 600 0 0 0 0 0 600 0 0 0 
+0 600 0 600 600 600 600 600 600 600 0 0 600 600 600 600 
+600 0 600 600 600 600 600 0 600 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 22 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 146
+/Widths [600 0 0 0 0 0 0 0 600 600 600 0 600 0 0 600 
+600 600 0 0 0 0 0 0 0 0 600 600 600 600 600 0 
+0 0 0 600 0 600 600 0 0 0 0 0 600 0 600 0 
+0 0 0 0 0 600 0 0 0 0 0 0 0 0 0 0 
+0 600 600 600 600 600 600 600 600 600 600 0 600 600 600 600 
+600 0 600 600 600 600 600 600 600 600 600 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Oblique
+/FontDescriptor 23 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 11 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+12 0 obj
+<<
+/Type /Page
+/Parent 11 0 R
+/Resources 14 0 R
+/Contents 13 0 R
+>>
+endobj
+15 0 obj
+<<
+/Type /Page
+/Parent 11 0 R
+/Resources 17 0 R
+/Contents 16 0 R
+>>
+endobj
+24 0 obj
+<<
+/S /D
+>>
+endobj
+25 0 obj
+<<
+/Nums [0 24 0 R ]
+>>
+endobj
+11 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 12 0 R 15 0 R]
+/Count 3
+/MediaBox [0 0 595 842]
+>>
+endobj
+26 0 obj
+<<
+/CreationDate (D:20110614205004-03'00')
+/ModDate (D:20110614205004-03'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+27 0 obj
+<<
+/Type /Catalog
+/Pages 11 0 R
+/PageLabels 25 0 R
+>>
+endobj
+xref
+0 28
+0000000000 65535 f 
+0000025395 00000 n 
+0000000016 00000 n 
+0000007830 00000 n 
+0000023247 00000 n 
+0000023451 00000 n 
+0000023629 00000 n 
+0000023943 00000 n 
+0000024488 00000 n 
+0000024902 00000 n 
+0000021907 00000 n 
+0000025712 00000 n 
+0000025476 00000 n 
+0000007983 00000 n 
+0000017427 00000 n 
+0000025560 00000 n 
+0000017581 00000 n 
+0000021753 00000 n 
+0000022048 00000 n 
+0000022250 00000 n 
+0000022456 00000 n 
+0000022653 00000 n 
+0000022844 00000 n 
+0000023046 00000 n 
+0000025644 00000 n 
+0000025672 00000 n 
+0000025808 00000 n 
+0000025931 00000 n 
+trailer
+<<
+/Size 28
+/Root 27 0 R
+/Info 26 0 R
+/ID [<9d1449d12f4bd7bcf69eb00b9e987959><9d1449d12f4bd7bcf69eb00b9e987959>]
+>>
+startxref
+26001
+%%EOF

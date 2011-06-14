@@ -1,0 +1,636 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 4854
+>>
+stream
+0.95 g
+/GS1 gs
+24 800 547 -18 re
+f
+0.7 g
+24 818 72 -36 re
+f
+BT
+/TT2 1 Tf
+12 0 0 12 38.666 802 Tm
+0 g
+0 Tc
+0 Tw
+(06/14/11)Tj
+-0.0552 -1.0667 TD
+(14:07:29)Tj
+ET
+0.7 g
+499 818 72 -36 re
+f
+BT
+/TT4 1 Tf
+28.8 0 0 28.8 526.9914 789.2 Tm
+1 g
+(1)Tj
+/TT6 1 Tf
+14 0 0 14 262.7085 786.5 Tm
+0 g
+(heaptest.cpp)Tj
+/TT8 1 Tf
+7 0 0 7 46.8 772 Tm
+[(1:)-599.8(# )]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+3 0 TD
+(include)Tj
+/TT8 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+(<stdio.h>)Tj
+/TT8 1 Tf
+0 g
+-7.8 -1.1429 TD
+[(2:)-599.8(#)]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+2.4 0 TD
+(include)Tj
+/TT8 1 Tf
+0 g
+4.2 0 TD
+( )Tj
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+0.6 0 TD
+("Heap.h")Tj
+/TT8 1 Tf
+0 g
+-7.2 -1.1429 TD
+(3:)Tj
+T*
+(4:)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.8 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( )Tj
+/TT10 1 Tf
+0 0 1 rg
+0.6 0 TD
+(main)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+(\()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+0.6 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( argc, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(char)Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+( * argv[]\))Tj
+-15.6 -1.1429 TD
+[(5:)-599.8({)]TJ
+T*
+[(6:)-599.8(    Heap heap\(10\);)]TJ
+T*
+(7:)Tj
+T*
+[(8:)-599.8(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+13.8 0 TD
+("inserindo 0, 3\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-24.6 -1.1429 TD
+(9:)Tj
+-0.6 -1.1429 TD
+[(10:)-599.7(    heap.insertOnHeap\(0, 3\);)]TJ
+T*
+(11:)Tj
+T*
+[(12:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("inserindo 1, 1\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-25.2 -1.1429 TD
+(13:)Tj
+T*
+[(14:)-599.7(    heap.insertOnHeap\(1, 1\);)]TJ
+T*
+(15:)Tj
+T*
+[(16:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("inserindo 2, 3\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-25.2 -1.1429 TD
+(17:)Tj
+T*
+[(18:)-599.7(    heap.insertOnHeap\(2, 3\);)]TJ
+T*
+(19:)Tj
+T*
+[(20:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("inserindo 3, 2\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-25.2 -1.1429 TD
+(21:)Tj
+T*
+[(22:)-599.7(    heap.insertOnHeap\(3, 2\);)]TJ
+T*
+(23:)Tj
+T*
+[(24:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("inserindo 4, 2\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-25.2 -1.1429 TD
+(25:)Tj
+T*
+[(26:)-599.7(    heap.insertOnHeap\(4, 2\);)]TJ
+T*
+(27:)Tj
+T*
+[(28:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("inserindo 5, 3\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-25.2 -1.1429 TD
+(29:)Tj
+T*
+[(30:)-599.7(    heap.insertOnHeap\(5, 3\);)]TJ
+T*
+(31:)Tj
+T*
+[(32:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("inserindo 6, 2\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-25.2 -1.1429 TD
+(33:)Tj
+T*
+[(34:)-599.7(    heap.insertOnHeap\(6, 2\);)]TJ
+T*
+(35:)Tj
+T*
+[(36:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("inserindo 7, 1\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-25.2 -1.1429 TD
+(37:)Tj
+T*
+[(38:)-599.7(    heap.insertOnHeap\(7, 1\);)]TJ
+T*
+(39:)Tj
+T*
+[(40:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("inserindo 8, 4\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-25.2 -1.1429 TD
+(41:)Tj
+T*
+[(42:)-599.7(    heap.insertOnHeap\(8, 4\);)]TJ
+T*
+(43:)Tj
+T*
+[(44:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("inserindo 9, 1\\n")Tj
+/TT8 1 Tf
+0 g
+10.8 0 TD
+(\);)Tj
+-25.2 -1.1429 TD
+(45:)Tj
+T*
+[(46:)-599.7(    heap.insertOnHeap\(9, 1\);)]TJ
+T*
+(47:)Tj
+T*
+[(48:)-599.7(    heap.print\(\);)]TJ
+T*
+[(49:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("\\n")Tj
+/TT8 1 Tf
+0 g
+2.4 0 TD
+(\);)Tj
+-16.8 -1.1429 TD
+(50:)Tj
+T*
+[(51:)-599.7(    heap.DecrementDegree\(2\);)]TJ
+T*
+(52:)Tj
+T*
+[(53:)-599.7(    heap.print\(\);)]TJ
+T*
+(54:)Tj
+T*
+(55:)Tj
+T*
+[(56:)-599.7(    fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+14.4 0 TD
+("Removendo da heap:\\n")Tj
+/TT8 1 Tf
+0 g
+13.2 0 TD
+(\);)Tj
+-27.6 -1.1429 TD
+(57:)Tj
+T*
+(58:)Tj
+T*
+[(59:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(for)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(\()Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+0.6 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+( i = 0; i < 20; i++\) {)Tj
+-9 -1.1429 TD
+[(60:)-599.7(        )]TJ
+/TT10 1 Tf
+0.373 0.62 0.627 rg
+7.2 0 TD
+(std)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(::pair<)Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+4.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(, )Tj
+/TT10 1 Tf
+0.133 0.545 0.133 rg
+1.2 0 TD
+(int)Tj
+/TT8 1 Tf
+0 g
+1.8 0 TD
+(> element;)Tj
+-18 -1.1429 TD
+[(61:)-599.7(        heap.removeFromHeap\(element\);)]TJ
+T*
+(62:)Tj
+T*
+[(63:)-599.7(        fprintf\(stderr, )]TJ
+/TT10 1 Tf
+0.737 0.561 0.561 rg
+16.8 0 TD
+("%d - vertex: %d - degree: %d\\n")Tj
+/TT8 1 Tf
+0 g
+19.2 0 TD
+(, i, element.first, element.second\);)Tj
+-36 -1.1429 TD
+[(64:)-599.7(    })]TJ
+T*
+(65:)Tj
+T*
+[(66:)-599.7(    )]TJ
+/TT10 1 Tf
+0.627 0.125 0.941 rg
+4.8 0 TD
+(return)Tj
+/TT8 1 Tf
+0 g
+3.6 0 TD
+( 0;)Tj
+-8.4 -1.1429 TD
+[(67:)-599.7(})]TJ
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+/TT8 7 0 R
+/TT10 8 0 R
+>>
+/ExtGState <<
+/GS1 9 0 R
+>>
+>>
+endobj
+9 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+11 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 676
+/Descent -250
+/Flags 262178
+/FontBBox [-168 -218 1000 935]
+/FontName /Times-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 461
+/StemH 139
+>>
+endobj
+12 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 262176
+/FontBBox [-170 -228 1003 962]
+/FontName /Helvetica-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 532
+/StemH 140
+>>
+endobj
+13 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 750
+/CapHeight 662
+/Descent -250
+/Flags 34
+/FontBBox [-168 -218 1000 898]
+/FontName /Times-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 450
+/StemH 84
+>>
+endobj
+14 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 35
+/FontBBox [-28 -250 628 805]
+/FontName /Courier
+/ItalicAngle 0
+/StemV 51
+/XHeight 426
+/StemH 51
+>>
+endobj
+15 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 47
+/LastChar 58
+/Widths [278 500 500 500 0 500 0 500 500 0 500 333 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Bold
+/FontDescriptor 11 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 49
+/LastChar 49
+/Widths [556 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica-Bold
+/FontDescriptor 12 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 46
+/LastChar 116
+/Widths [250 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 444 0 444 0 444 0 0 500 0 0 0 0 0 
+0 0 500 0 0 389 278 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Times-Roman
+/FontDescriptor 13 0 R
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 125
+/Widths [600 0 0 600 0 0 0 0 600 600 600 600 600 0 600 0 
+600 600 600 600 600 600 600 600 600 600 600 600 600 600 600 0 
+0 0 0 0 600 0 600 0 600 0 0 0 0 0 0 600 
+0 0 0 0 0 0 0 0 0 0 0 600 0 600 0 0 
+0 600 0 600 600 600 600 600 600 600 0 0 600 600 600 600 
+600 0 600 600 600 0 600 0 0 0 0 600 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier
+/FontDescriptor 14 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 120
+/Widths [600 0 600 0 0 600 0 0 0 0 0 0 600 600 600 0 
+600 600 600 600 600 600 600 600 600 600 600 0 600 0 600 0 
+0 0 0 0 0 0 0 0 600 0 0 0 0 0 0 0 
+0 0 600 0 0 0 0 0 0 0 0 0 600 0 0 0 
+0 600 0 600 600 600 600 600 600 600 0 0 600 600 600 600 
+600 0 600 600 600 600 600 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 15 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 10 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+16 0 obj
+<<
+/S /D
+>>
+endobj
+17 0 obj
+<<
+/Nums [0 16 0 R ]
+>>
+endobj
+10 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R]
+/Count 1
+/MediaBox [0 0 595 842]
+>>
+endobj
+18 0 obj
+<<
+/CreationDate (D:20110614205006-03'00')
+/ModDate (D:20110614205006-03'00')
+/Producer (Apple pstopdf)
+>>
+endobj
+19 0 obj
+<<
+/Type /Catalog
+/Pages 10 0 R
+/PageLabels 17 0 R
+>>
+endobj
+xref
+0 20
+0000000000 65535 f 
+0000007779 00000 n 
+0000000016 00000 n 
+0000004922 00000 n 
+0000006200 00000 n 
+0000006404 00000 n 
+0000006574 00000 n 
+0000006900 00000 n 
+0000007349 00000 n 
+0000005062 00000 n 
+0000007928 00000 n 
+0000005202 00000 n 
+0000005404 00000 n 
+0000005610 00000 n 
+0000005807 00000 n 
+0000005998 00000 n 
+0000007860 00000 n 
+0000007888 00000 n 
+0000008010 00000 n 
+0000008133 00000 n 
+trailer
+<<
+/Size 20
+/Root 19 0 R
+/Info 18 0 R
+/ID [<aa700dd6dbd9db789248a7f61340e747><aa700dd6dbd9db789248a7f61340e747>]
+>>
+startxref
+8203
+%%EOF

@@ -1,0 +1,1988 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 24 24 571 818
+%%Title: Enscript Output
+%%For: Dario Souza
+%%Creator: GNU enscript 1.6.4
+%%CreationDate: Tue Jun 14 20:48:43 2011
+%%Orientation: Portrait
+%%Pages: (atend)
+%%DocumentMedia: A4 595 842 0 () ()
+%%DocumentNeededResources: (atend)
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset Enscript-Prolog 1.6 4
+%
+% Procedures.
+%
+
+/_S {	% save current state
+  /_s save def
+} def
+/_R {	% restore from saved state
+  _s restore
+} def
+
+/S {	% showpage protecting gstate
+  gsave
+  showpage
+  grestore
+} bind def
+
+/MF {	% fontname newfontname -> -	make a new encoded font
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  % insert only valid encoding vectors
+  encoding_vector length 256 eq {
+    newfont /Encoding encoding_vector put
+  } if
+
+  newfontname newfont definefont pop
+} def
+
+/MF_PS { % fontname newfontname -> -	make a new font preserving its enc
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  newfontname newfont definefont pop
+} def
+
+/SF { % fontname width height -> -	set a new font
+  /height exch def
+  /width exch def
+
+  findfont
+  [width 0 0 height 0 0] makefont setfont
+} def
+
+/SUF { % fontname width height -> -	set a new user font
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF
+  /F-gs-user-font width height SF
+} def
+
+/SUF_PS { % fontname width height -> -	set a new user font preserving its enc
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF_PS
+  /F-gs-user-font width height SF
+} def
+
+/M {moveto} bind def
+/s {show} bind def
+
+/Box {	% x y w h -> -			define box path
+  /d_h exch def /d_w exch def /d_y exch def /d_x exch def
+  d_x d_y  moveto
+  d_w 0 rlineto
+  0 d_h rlineto
+  d_w neg 0 rlineto
+  closepath
+} def
+
+/bgs {	% x y height blskip gray str -> -	show string with bg color
+  /str exch def
+  /gray exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    gray setgray
+    fill
+  grestore
+  x y M str s
+} def
+
+/bgcs { % x y height blskip red green blue str -> -  show string with bg color
+  /str exch def
+  /blue exch def
+  /green exch def
+  /red exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    red green blue setrgbcolor
+    fill
+  grestore
+  x y M str s
+} def
+
+% Highlight bars.
+/highlight_bars {	% nlines lineheight output_y_margin gray -> -
+  gsave
+    setgray
+    /ymarg exch def
+    /lineheight exch def
+    /nlines exch def
+
+    % This 2 is just a magic number to sync highlight lines to text.
+    0 d_header_y ymarg sub 2 sub translate
+
+    /cw d_output_w cols div def
+    /nrows d_output_h ymarg 2 mul sub lineheight div cvi def
+
+    % for each column
+    0 1 cols 1 sub {
+      cw mul /xp exch def
+
+      % for each rows
+      0 1 nrows 1 sub {
+        /rn exch def
+        rn lineheight mul neg /yp exch def
+        rn nlines idiv 2 mod 0 eq {
+	  % Draw highlight bar.  4 is just a magic indentation.
+	  xp 4 add yp cw 8 sub lineheight neg Box fill
+	} if
+      } for
+    } for
+
+  grestore
+} def
+
+% Line highlight bar.
+/line_highlight {	% x y width height gray -> -
+  gsave
+    /gray exch def
+    Box gray setgray fill
+  grestore
+} def
+
+% Column separator lines.
+/column_lines {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h translate
+    /cw d_output_w cols div def
+    1 1 cols 1 sub {
+      cw mul 0 moveto
+      0 d_output_h rlineto stroke
+    } for
+  grestore
+} def
+
+% Column borders.
+/column_borders {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h moveto
+    0 d_output_h rlineto
+    d_output_w 0 rlineto
+    0 d_output_h neg rlineto
+    closepath stroke
+  grestore
+} def
+
+% Do the actual underlay drawing
+/draw_underlay {
+  ul_style 0 eq {
+    ul_str true charpath stroke
+  } {
+    ul_str show
+  } ifelse
+} def
+
+% Underlay
+/underlay {	% - -> -
+  gsave
+    0 d_page_h translate
+    d_page_h neg d_page_w atan rotate
+
+    ul_gray setgray
+    ul_font setfont
+    /dw d_page_h dup mul d_page_w dup mul add sqrt def
+    ul_str stringwidth pop dw exch sub 2 div ul_h_ptsize -2 div moveto
+    draw_underlay
+  grestore
+} def
+
+/user_underlay {	% - -> -
+  gsave
+    ul_x ul_y translate
+    ul_angle rotate
+    ul_gray setgray
+    ul_font setfont
+    0 0 ul_h_ptsize 2 div sub moveto
+    draw_underlay
+  grestore
+} def
+
+% Page prefeed
+/page_prefeed {		% bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} def
+
+% Wrapped line markers
+/wrapped_line_mark {	% x y charwith charheight type -> -
+  /type exch def
+  /h exch def
+  /w exch def
+  /y exch def
+  /x exch def
+
+  type 2 eq {
+    % Black boxes (like TeX does)
+    gsave
+      0 setlinewidth
+      x w 4 div add y M
+      0 h rlineto w 2 div 0 rlineto 0 h neg rlineto
+      closepath fill
+    grestore
+  } {
+    type 3 eq {
+      % Small arrows
+      gsave
+        .2 setlinewidth
+        x w 2 div add y h 2 div add M
+        w 4 div 0 rlineto
+        x w 4 div add y lineto stroke
+
+        x w 4 div add w 8 div add y h 4 div add M
+        x w 4 div add y lineto
+	w 4 div h 8 div rlineto stroke
+      grestore
+    } {
+      % do nothing
+    } ifelse
+  } ifelse
+} def
+
+% EPSF import.
+
+/BeginEPSF {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack
+  userdict begin
+  /showpage { } def
+  0 setgray 0 setlinecap
+  1 setlinewidth 0 setlinejoin
+  10 setmiterlimit [ ] 0 setdash newpath
+  /languagelevel where {
+    pop languagelevel
+    1 ne {
+      false setstrokeadjust false setoverprint
+    } if
+  } if
+} bind def
+
+/EndEPSF {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+%%EndResource
+%%BeginResource: procset Enscript-Encoding-88591 1.6 4
+/encoding_vector [
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclam       	/quotedbl     	/numbersign   	
+/dollar       	/percent      	/ampersand    	/quoteright   	
+/parenleft    	/parenright   	/asterisk     	/plus         	
+/comma        	/hyphen       	/period       	/slash        	
+/zero         	/one          	/two          	/three        	
+/four         	/five         	/six          	/seven        	
+/eight        	/nine         	/colon        	/semicolon    	
+/less         	/equal        	/greater      	/question     	
+/at           	/A            	/B            	/C            	
+/D            	/E            	/F            	/G            	
+/H            	/I            	/J            	/K            	
+/L            	/M            	/N            	/O            	
+/P            	/Q            	/R            	/S            	
+/T            	/U            	/V            	/W            	
+/X            	/Y            	/Z            	/bracketleft  	
+/backslash    	/bracketright 	/asciicircum  	/underscore   	
+/quoteleft    	/a            	/b            	/c            	
+/d            	/e            	/f            	/g            	
+/h            	/i            	/j            	/k            	
+/l            	/m            	/n            	/o            	
+/p            	/q            	/r            	/s            	
+/t            	/u            	/v            	/w            	
+/x            	/y            	/z            	/braceleft    	
+/bar          	/braceright   	/tilde        	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclamdown   	/cent         	/sterling     	
+/currency     	/yen          	/brokenbar    	/section      	
+/dieresis     	/copyright    	/ordfeminine  	/guillemotleft	
+/logicalnot   	/hyphen       	/registered   	/macron       	
+/degree       	/plusminus    	/twosuperior  	/threesuperior	
+/acute        	/mu           	/paragraph    	/bullet       	
+/cedilla      	/onesuperior  	/ordmasculine 	/guillemotright	
+/onequarter   	/onehalf      	/threequarters	/questiondown 	
+/Agrave       	/Aacute       	/Acircumflex  	/Atilde       	
+/Adieresis    	/Aring        	/AE           	/Ccedilla     	
+/Egrave       	/Eacute       	/Ecircumflex  	/Edieresis    	
+/Igrave       	/Iacute       	/Icircumflex  	/Idieresis    	
+/Eth          	/Ntilde       	/Ograve       	/Oacute       	
+/Ocircumflex  	/Otilde       	/Odieresis    	/multiply     	
+/Oslash       	/Ugrave       	/Uacute       	/Ucircumflex  	
+/Udieresis    	/Yacute       	/Thorn        	/germandbls   	
+/agrave       	/aacute       	/acircumflex  	/atilde       	
+/adieresis    	/aring        	/ae           	/ccedilla     	
+/egrave       	/eacute       	/ecircumflex  	/edieresis    	
+/igrave       	/iacute       	/icircumflex  	/idieresis    	
+/eth          	/ntilde       	/ograve       	/oacute       	
+/ocircumflex  	/otilde       	/odieresis    	/divide       	
+/oslash       	/ugrave       	/uacute       	/ucircumflex  	
+/udieresis    	/yacute       	/thorn        	/ydieresis    	
+] def
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Courier
+/HFpt_w 10 def
+/HFpt_h 10 def
+/Courier-Bold /HF-gs-font MF
+/HF /HF-gs-font findfont [HFpt_w 0 0 HFpt_h 0 0] makefont def
+/Courier /F-gs-font MF
+/F-gs-font 7 7 SF
+/#copies 1 def
+% Pagedevice definitions:
+gs_languagelevel 1 gt {
+  <<
+    /PageSize [595 842] 
+  >> setpagedevice
+} if
+%%BeginResource: procset Enscript-Header-enscript 1.6 4
+%%IncludeResource: font Times-Bold
+%%IncludeResource: font Times-Roman
+
+% Fonts.
+/Times-Bold /HeaderFont-Bold MF
+/HeaderDateF /HeaderFont-Bold findfont 12 scalefont def
+
+/Times-Roman /HeaderFont-Times MF
+/HeaderHDRF /HeaderFont-Times findfont 14 scalefont def
+
+/HeaderPageNumF /Helvetica-Bold findfont 28.8 scalefont def
+
+/do_header {	% print enscript header
+  gsave
+    d_header_x d_header_y translate
+
+    % light bar
+    0 0 d_header_w d_header_h 2 div Box
+    .95 setgray fill
+
+    % dark gray boxes
+    /dbw d_header_h 2 mul def	% dark box width
+    /dbc .7 def			% dark box color
+
+    % left dark box.
+    0 0 dbw d_header_h Box
+    dbc setgray fill
+
+    0 setgray 
+    HeaderDateF setfont
+    moddatestr dup stringwidth pop dbw exch sub 2 div 
+    d_header_h 2 div 2 add moveto show
+    modtimestr dup stringwidth pop dbw exch sub 2 div 
+    d_header_h 5 div moveto show
+
+    % right dark box
+    d_header_w dbw sub 0 dbw d_header_h Box
+    dbc setgray fill
+
+    HeaderPageNumF setfont
+    1 setgray
+    pagenumstr dup
+    stringwidth pop dbw exch sub 2 div d_header_w dbw sub add
+    d_header_h .2 mul moveto show
+
+    % filename
+    0 setgray 
+    HeaderHDRF setfont
+    d_header_w fname stringwidth pop sub 2 div d_header_h 8 div moveto
+    fname show
+
+    % user supplied header string.
+    user_header_p {
+      /h d_header_h 8 div 5 mul def
+
+      % Implement strict enscript compatibility.
+      user_header_center_str () eq user_header_right_str () eq and {
+        d_header_w user_header_left_str stringwidth pop sub 2 div 
+        h moveto user_header_left_str show
+      } {
+        dbw 5 add h moveto user_header_left_str show
+
+        d_header_w user_header_center_str stringwidth pop sub 2 div 
+        h moveto user_header_center_str show
+
+	d_header_w dbw sub 5 sub user_header_right_str stringwidth pop
+	sub h moveto user_header_right_str show
+      } ifelse
+    } if
+
+  grestore
+} def
+%%EndResource
+/d_page_w 547 def
+/d_page_h 794 def
+/d_header_x 0 def
+/d_header_y 758 def
+/d_header_w 547 def
+/d_header_h 36 def
+/d_footer_x 0 def
+/d_footer_y 0 def
+/d_footer_w 547 def
+/d_footer_h 0 def
+/d_output_w 547 def
+/d_output_h 758 def
+/cols 1 def
+%%EndSetup
+%%Page: (1) 1
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 1 def
+/fname (cobertura.cpp) def
+/fdir () def
+/ftail (cobertura.cpp) def
+% User defined strings:
+/pagenumstr (1) def
+/moddatestr (06/14/11) def
+/modtimestr (17:13:12) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+22.8 748 M (1:) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+35.4 748 M
+(/*) s
+/F-gs-font 7 7 SF
+22.8 740 M (2:) s
+/Courier-Oblique 7 7 SUF
+35.4 740 M
+( * cobertura.cpp) s
+/F-gs-font 7 7 SF
+22.8 732 M (3:) s
+/Courier-Oblique 7 7 SUF
+35.4 732 M
+( *) s
+/F-gs-font 7 7 SF
+22.8 724 M (4:) s
+/Courier-Oblique 7 7 SUF
+35.4 724 M
+( *  Created on: Jun 11, 2011) s
+/F-gs-font 7 7 SF
+22.8 716 M (5:) s
+/Courier-Oblique 7 7 SUF
+35.4 716 M
+( *      Author: darioandrade) s
+/F-gs-font 7 7 SF
+22.8 708 M (6:) s
+/Courier-Oblique 7 7 SUF
+35.4 708 M
+( */) s
+/F-gs-font 7 7 SF
+0 setgray
+22.8 700 M (7:) s
+22.8 692 M (8:) s
+35.4 692 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 692 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 692 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 692 M
+(<sys/timeb.h>) s
+/F-gs-font 7 7 SF
+0 setgray
+22.8 684 M (9:) s
+35.4 684 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 684 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 684 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 684 M
+(<time.h>) s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 676 M (10:) s
+35.4 676 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 676 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 676 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 676 M
+(<string.h>) s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 668 M (11:) s
+35.4 668 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 668 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 668 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 668 M
+(<stdio.h>) s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 660 M (12:) s
+35.4 660 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 660 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 660 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 660 M
+(<cstdlib>) s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 652 M (13:) s
+35.4 652 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 652 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 652 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 652 M
+("AlgoritmoCoberturaGulosa.h") s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 644 M (14:) s
+35.4 644 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 644 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 644 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 644 M
+("DegreeVectorAdjacencyList.h") s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 636 M (15:) s
+35.4 636 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 636 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 636 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 636 M
+("VertexVectorAdjacencyList.h") s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 628 M (16:) s
+35.4 628 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 628 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 628 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 628 M
+("DegreeHeapAdjacencyList.h") s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 620 M (17:) s
+18.6 612 M (18:) s
+35.4 612 M
+(#) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+39.6 612 M
+(include) s
+/F-gs-font 7 7 SF
+0 setgray
+69 612 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+73.2 612 M
+("GeraGrafo.h") s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 604 M (19:) s
+18.6 596 M (20:) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+35.4 596 M
+(typedef) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 596 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+69 596 M
+(long) s
+/F-gs-font 7 7 SF
+0 setgray
+85.8 596 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+90 596 M
+(unsigned) s
+/F-gs-font 7 7 SF
+0 setgray
+123.6 596 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+127.8 596 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+140.4 596 M
+( ltime;) s
+18.6 588 M (21:) s
+18.6 580 M (22:) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+35.4 580 M
+(static) s
+/F-gs-font 7 7 SF
+0 setgray
+60.6 580 M
+( ltime ) s
+/Courier-Bold 7 7 SUF
+0 0 1 setrgbcolor
+90 580 M
+(getMilliCount) s
+/F-gs-font 7 7 SF
+0 setgray
+144.6 580 M
+( \( \)) s
+18.6 572 M (23:) s
+35.4 572 M
+({) s
+18.6 564 M (24:) s
+35.4 564 M
+(    timeb tb;) s
+18.6 556 M (25:) s
+35.4 556 M
+(    ftime\( &tb \);) s
+18.6 548 M (26:) s
+35.4 548 M
+(    time_t nCount = tb.millitm + \( tb.time * 1000 \);) s
+18.6 540 M (27:) s
+35.4 540 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 540 M
+(return) s
+/F-gs-font 7 7 SF
+0 setgray
+77.4 540 M
+( nCount;) s
+18.6 532 M (28:) s
+35.4 532 M
+(}) s
+18.6 524 M (29:) s
+18.6 516 M (30:) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+35.4 516 M
+(/*) s
+/F-gs-font 7 7 SF
+18.6 508 M (31:) s
+/Courier-Oblique 7 7 SUF
+35.4 508 M
+(static ltime getMicroCount \( \)) s
+/F-gs-font 7 7 SF
+18.6 500 M (32:) s
+/Courier-Oblique 7 7 SUF
+35.4 500 M
+({) s
+/F-gs-font 7 7 SF
+18.6 492 M (33:) s
+/Courier-Oblique 7 7 SUF
+35.4 492 M
+(    timeval tv;) s
+/F-gs-font 7 7 SF
+18.6 484 M (34:) s
+/Courier-Oblique 7 7 SUF
+35.4 484 M
+(    timezone tz;) s
+/F-gs-font 7 7 SF
+18.6 476 M (35:) s
+/Courier-Oblique 7 7 SUF
+35.4 476 M
+(    tm *tm;) s
+/F-gs-font 7 7 SF
+18.6 468 M (36:) s
+/Courier-Oblique 7 7 SUF
+35.4 468 M
+(    gettimeofday\(&tv, &tz\);) s
+/F-gs-font 7 7 SF
+18.6 460 M (37:) s
+/Courier-Oblique 7 7 SUF
+35.4 460 M
+(    return tv.tv_usec;) s
+/F-gs-font 7 7 SF
+18.6 452 M (38:) s
+/Courier-Oblique 7 7 SUF
+35.4 452 M
+(}) s
+/F-gs-font 7 7 SF
+18.6 444 M (39:) s
+/Courier-Oblique 7 7 SUF
+35.4 444 M
+(*/) s
+/F-gs-font 7 7 SF
+0 setgray
+18.6 436 M (40:) s
+18.6 428 M (41:) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+35.4 428 M
+(void) s
+/F-gs-font 7 7 SF
+0 setgray
+52.2 428 M
+( ) s
+/Courier-Bold 7 7 SUF
+0 0 1 setrgbcolor
+56.4 428 M
+(FacaTarefa) s
+/F-gs-font 7 7 SF
+0 setgray
+98.4 428 M
+( \( AdjacencyList* pGrafo, ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+207.6 428 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+220.2 428 M
+( debug \)) s
+18.6 420 M (42:) s
+35.4 420 M
+({) s
+18.6 412 M (43:) s
+35.4 412 M
+(    AdjacencyList& grafo = *pGrafo;) s
+18.6 404 M (44:) s
+18.6 396 M (45:) s
+35.4 396 M
+(    AlgoritmoCoberturaGulosa guloso;) s
+18.6 388 M (46:) s
+18.6 380 M (47:) s
+35.4 380 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+52.2 380 M
+(std) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 380 M
+(::list<) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+94.2 380 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+106.8 380 M
+(> listaDaCobertura;) s
+18.6 372 M (48:) s
+18.6 364 M (49:) s
+35.4 364 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 364 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+60.6 364 M
+( \( debug >= 1 \)) s
+18.6 356 M (50:) s
+35.4 356 M
+(    {) s
+18.6 348 M (51:) s
+35.4 348 M
+(        fprintf\( stderr, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+140.4 348 M
+("Calculando cobertura para o grafo com %d vertices\\n") s
+/F-gs-font 7 7 SF
+0 setgray
+363 348 M
+(, grafo.GetSize\( \) \);) s
+18.6 340 M (52:) s
+35.4 340 M
+(    }) s
+18.6 332 M (53:) s
+18.6 324 M (54:) s
+35.4 324 M
+(    guloso.CalculateCobertura\( listaDaCobertura, grafo, debug \);) s
+18.6 316 M (55:) s
+18.6 308 M (56:) s
+35.4 308 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 308 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+60.6 308 M
+( \( debug >= 1 \)) s
+18.6 300 M (57:) s
+35.4 300 M
+(    {) s
+18.6 292 M (58:) s
+35.4 292 M
+(        fprintf\( stderr, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+140.4 292 M
+("Cobertura para o grafo \(nvertex: %d\) tem %d vertices:\\n") s
+/F-gs-font 7 7 SF
+0 setgray
+379.8 292 M
+(, grafo.GetSize\( \),) s
+18.6 284 M (59:) s
+35.4 284 M
+(                \( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+111 284 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+123.6 284 M
+( \) listaDaCobertura.size\( \) \);) s
+18.6 276 M (60:) s
+35.4 276 M
+(    }) s
+18.6 268 M (61:) s
+18.6 260 M (62:) s
+35.4 260 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 260 M
+(for) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 260 M
+( \( std::list<) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+119.4 260 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+132 260 M
+(>::iterator it = listaDaCobertura.begin\( \); it != listaDaCobertura.end\( \); it++ \)) s
+18.6 252 M (63:) s
+35.4 252 M
+(    {) s
+18.6 244 M (64:) s
+35.4 244 M
+(        fprintf\( stdout, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+140.4 244 M
+("%d ") s
+/F-gs-font 7 7 SF
+0 setgray
+161.4 244 M
+(, *it \);) s
+18.6 236 M (65:) s
+35.4 236 M
+(    }) s
+18.6 228 M (66:) s
+18.6 220 M (67:) s
+35.4 220 M
+(    fprintf\( stdout, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+123.6 220 M
+("\\n") s
+/F-gs-font 7 7 SF
+0 setgray
+140.4 220 M
+( \);) s
+18.6 212 M (68:) s
+35.4 212 M
+(}) s
+18.6 204 M (69:) s
+18.6 196 M (70:) s
+35.4 196 M
+(AdjacencyList * ) s
+/Courier-Bold 7 7 SUF
+0 0 1 setrgbcolor
+102.6 196 M
+(EscolhaGrafo) s
+/F-gs-font 7 7 SF
+0 setgray
+153 196 M
+( \( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+165.6 196 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+178.2 196 M
+( tarefa \)) s
+18.6 188 M (71:) s
+35.4 188 M
+({) s
+18.6 180 M (72:) s
+35.4 180 M
+(    AdjacencyList * pGrafo = NULL;) s
+18.6 172 M (73:) s
+18.6 164 M (74:) s
+35.4 164 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 164 M
+(switch) s
+/F-gs-font 7 7 SF
+0 setgray
+77.4 164 M
+( \(tarefa\)) s
+18.6 156 M (75:) s
+35.4 156 M
+(    {) s
+18.6 148 M (76:) s
+35.4 148 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+69 148 M
+(case) s
+/F-gs-font 7 7 SF
+0 setgray
+85.8 148 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+90 148 M
+(3) s
+/F-gs-font 7 7 SF
+0 setgray
+94.2 148 M
+(:) s
+18.6 140 M (77:) s
+35.4 140 M
+(            pGrafo = new DegreeVectorAdjacencyList\( \);) s
+18.6 132 M (78:) s
+35.4 132 M
+(            ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+85.8 132 M
+(break) s
+/F-gs-font 7 7 SF
+0 setgray
+106.8 132 M
+(;) s
+18.6 124 M (79:) s
+18.6 116 M (80:) s
+35.4 116 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+69 116 M
+(case) s
+/F-gs-font 7 7 SF
+0 setgray
+85.8 116 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+90 116 M
+(4) s
+/F-gs-font 7 7 SF
+0 setgray
+94.2 116 M
+(:) s
+18.6 108 M (81:) s
+35.4 108 M
+(            pGrafo = new DegreeHeapAdjacencyList\( \);) s
+18.6 100 M (82:) s
+35.4 100 M
+(            ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+85.8 100 M
+(break) s
+/F-gs-font 7 7 SF
+0 setgray
+106.8 100 M
+(;) s
+18.6 92 M (83:) s
+18.6 84 M (84:) s
+35.4 84 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+69 84 M
+(case) s
+/F-gs-font 7 7 SF
+0 setgray
+85.8 84 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+90 84 M
+(5) s
+/F-gs-font 7 7 SF
+0 setgray
+94.2 84 M
+(:) s
+18.6 76 M (85:) s
+35.4 76 M
+(            pGrafo = new VertexVectorAdjacencyList\( \);) s
+18.6 68 M (86:) s
+35.4 68 M
+(            ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+85.8 68 M
+(break) s
+/F-gs-font 7 7 SF
+0 setgray
+106.8 68 M
+(;) s
+18.6 60 M (87:) s
+35.4 60 M
+(    }) s
+18.6 52 M (88:) s
+18.6 44 M (89:) s
+35.4 44 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 44 M
+(return) s
+/F-gs-font 7 7 SF
+0 setgray
+77.4 44 M
+( pGrafo;) s
+18.6 36 M (90:) s
+35.4 36 M
+(}) s
+18.6 28 M (91:) s
+18.6 20 M (92:) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+35.4 20 M
+(void) s
+/F-gs-font 7 7 SF
+0 setgray
+52.2 20 M
+( ) s
+/Courier-Bold 7 7 SUF
+0 0 1 setrgbcolor
+56.4 20 M
+(Benchmark) s
+/F-gs-font 7 7 SF
+0 setgray
+94.2 20 M
+( \( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+106.8 20 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+119.4 20 M
+( debug \)) s
+18.6 12 M (93:) s
+35.4 12 M
+({) s
+18.6 4 M (94:) s
+35.4 4 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 4 M
+(struct) s
+/F-gs-font 7 7 SF
+0 setgray
+77.4 4 M
+( BenchmarkData {) s
+_R
+S
+%%Page: (2) 2
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 2 def
+/fname (cobertura.cpp) def
+/fdir () def
+/ftail (cobertura.cpp) def
+% User defined strings:
+/pagenumstr (2) def
+/moddatestr (06/14/11) def
+/modtimestr (17:13:12) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+18.6 748 M (95:) s
+35.4 748 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+69 748 M
+(char) s
+/F-gs-font 7 7 SF
+0 setgray
+85.8 748 M
+( sFilename[ 256 ];) s
+18.6 740 M (96:) s
+35.4 740 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+69 740 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+81.6 740 M
+( graphtype;) s
+18.6 732 M (97:) s
+35.4 732 M
+(        ltime loadtime, processingtime;) s
+18.6 724 M (98:) s
+35.4 724 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+69 724 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+81.6 724 M
+( algorithm;) s
+18.6 716 M (99:) s
+35.4 716 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+69 716 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+81.6 716 M
+( nvertex;) s
+14.4 708 M (100:) s
+35.4 708 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+69 708 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+81.6 708 M
+( nedges;) s
+14.4 700 M (101:) s
+35.4 700 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+69 700 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+81.6 700 M
+( ncobertura;) s
+14.4 692 M (102:) s
+35.4 692 M
+(    };) s
+14.4 684 M (103:) s
+14.4 676 M (104:) s
+35.4 676 M
+(    BenchmarkData results[ 3 ][ NSEQS ][ NGRAFOS_POR_SEQ ];) s
+14.4 668 M (105:) s
+14.4 660 M (106:) s
+35.4 660 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 660 M
+(for) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 660 M
+( \( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+77.4 660 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+90 660 M
+( algo = 3; algo <= 5; algo++ \)) s
+14.4 652 M (107:) s
+35.4 652 M
+(    {) s
+14.4 644 M (108:) s
+35.4 644 M
+(        AdjacencyList * pGrafo = EscolhaGrafo\( algo \);) s
+14.4 636 M (109:) s
+14.4 628 M (110:) s
+35.4 628 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+69 628 M
+(for) s
+/F-gs-font 7 7 SF
+0 setgray
+81.6 628 M
+( \( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+94.2 628 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+106.8 628 M
+( c = 0; c < NSEQS; c++ \)) s
+14.4 620 M (111:) s
+35.4 620 M
+(        {) s
+14.4 612 M (112:) s
+35.4 612 M
+(            ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+85.8 612 M
+(for) s
+/F-gs-font 7 7 SF
+0 setgray
+98.4 612 M
+( \( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+111 612 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+123.6 612 M
+( i = 1; i <= NGRAFOS_POR_SEQ; i++ \)) s
+14.4 604 M (113:) s
+35.4 604 M
+(            {) s
+14.4 596 M (114:) s
+35.4 596 M
+(                ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+102.6 596 M
+(char) s
+/F-gs-font 7 7 SF
+0 setgray
+119.4 596 M
+( path[256];) s
+14.4 588 M (115:) s
+35.4 588 M
+(                ltime deltams;) s
+14.4 580 M (116:) s
+35.4 580 M
+(                BenchmarkData & data = results[ algo - 3 ][ c ][ i - 1 ];) s
+14.4 572 M (117:) s
+14.4 564 M (118:) s
+35.4 564 M
+(                sprintf\( path, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+165.6 564 M
+("grafo_p%d_%02d.grafo") s
+/F-gs-font 7 7 SF
+0 setgray
+258 564 M
+(, c, i \);) s
+14.4 556 M (119:) s
+14.4 548 M (120:) s
+35.4 548 M
+(                ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+102.6 548 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+111 548 M
+( \( debug >= 1 \)) s
+14.4 540 M (121:) s
+35.4 540 M
+(                {) s
+14.4 532 M (122:) s
+35.4 532 M
+(                    fprintf\( stderr, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+190.8 532 M
+("Lendo grafo %s\\n") s
+/F-gs-font 7 7 SF
+0 setgray
+266.4 532 M
+(, path \);) s
+14.4 524 M (123:) s
+35.4 524 M
+(                }) s
+14.4 516 M (124:) s
+14.4 508 M (125:) s
+35.4 508 M
+(                data.algorithm = algo;) s
+14.4 500 M (126:) s
+35.4 500 M
+(                data.graphtype = c;) s
+14.4 492 M (127:) s
+35.4 492 M
+(                strcpy\( data.sFilename, path \);) s
+14.4 484 M (128:) s
+14.4 476 M (129:) s
+35.4 476 M
+(                FILE * f = fopen\( path, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+203.4 476 M
+("r") s
+/F-gs-font 7 7 SF
+0 setgray
+216 476 M
+( \);) s
+14.4 468 M (130:) s
+14.4 460 M (131:) s
+35.4 460 M
+(                deltams = getMilliCount\( \);) s
+14.4 452 M (132:) s
+14.4 444 M (133:) s
+35.4 444 M
+(                pGrafo->read\( f \);) s
+14.4 436 M (134:) s
+14.4 428 M (135:) s
+35.4 428 M
+(                deltams = getMilliCount\( \) - deltams;) s
+14.4 420 M (136:) s
+14.4 412 M (137:) s
+35.4 412 M
+(                fclose\( f \);) s
+14.4 404 M (138:) s
+14.4 396 M (139:) s
+35.4 396 M
+(                ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+102.6 396 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+111 396 M
+( \( debug >= 1 \)) s
+14.4 388 M (140:) s
+35.4 388 M
+(                {) s
+14.4 380 M (141:) s
+35.4 380 M
+(                    fprintf\( stderr, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+190.8 380 M
+("Grafo com %d vertices lido em %lu ms. Calculando cobertura com algoritmo %d\\n") s
+/F-gs-font 7 7 SF
+0 setgray
+522.6 380 M
+(,) s
+14.4 372 M (142:) s
+35.4 372 M
+(                            pGrafo->GetSize\( \), deltams, algo \);) s
+14.4 364 M (143:) s
+35.4 364 M
+(                }) s
+14.4 356 M (144:) s
+14.4 348 M (145:) s
+35.4 348 M
+(                data.loadtime = deltams;) s
+14.4 340 M (146:) s
+35.4 340 M
+(                data.nvertex = pGrafo->GetSize\( \);) s
+14.4 332 M (147:) s
+35.4 332 M
+(                data.nedges = pGrafo->GetEdges\( \);) s
+14.4 324 M (148:) s
+14.4 316 M (149:) s
+35.4 316 M
+(                deltams = getMilliCount\( \);) s
+14.4 308 M (150:) s
+14.4 300 M (151:) s
+35.4 300 M
+(                ) s
+/Courier-Bold 7 7 SUF
+0.372549 0.619608 0.627451 setrgbcolor
+102.6 300 M
+(std) s
+/F-gs-font 7 7 SF
+0 setgray
+115.2 300 M
+(::list<) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+144.6 300 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+157.2 300 M
+(> listaDaCobertura;) s
+14.4 292 M (152:) s
+14.4 284 M (153:) s
+35.4 284 M
+(                AlgoritmoCoberturaGulosa guloso;) s
+14.4 276 M (154:) s
+14.4 268 M (155:) s
+35.4 268 M
+(                guloso.CalculateCobertura\( listaDaCobertura, *pGrafo, debug \);) s
+14.4 260 M (156:) s
+14.4 252 M (157:) s
+35.4 252 M
+(                deltams = getMilliCount\( \) - deltams;) s
+14.4 244 M (158:) s
+14.4 236 M (159:) s
+35.4 236 M
+(                ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+102.6 236 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+111 236 M
+( \( debug >= 1 \)) s
+14.4 228 M (160:) s
+35.4 228 M
+(                {) s
+14.4 220 M (161:) s
+35.4 220 M
+(                    fprintf\( stderr, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+190.8 220 M
+("Cobertura possui %d vertices, calculada em %lu ms\\n") s
+/F-gs-font 7 7 SF
+0 setgray
+413.4 220 M
+(,) s
+14.4 212 M (162:) s
+35.4 212 M
+(                            \( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+161.4 212 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+174 212 M
+( \) listaDaCobertura.size\( \), deltams \);) s
+14.4 204 M (163:) s
+35.4 204 M
+(                }) s
+14.4 196 M (164:) s
+14.4 188 M (165:) s
+35.4 188 M
+(                data.ncobertura = listaDaCobertura.size\(\);) s
+14.4 180 M (166:) s
+35.4 180 M
+(                data.processingtime = deltams;) s
+14.4 172 M (167:) s
+14.4 164 M (168:) s
+35.4 164 M
+(                fprintf\( stdout, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+174 164 M
+("%d,%d,%s,%d,%d,%d,%lu,%lu\\n") s
+/F-gs-font 7 7 SF
+0 setgray
+295.8 164 M
+(,) s
+14.4 156 M (169:) s
+35.4 156 M
+(                         data.algorithm,) s
+14.4 148 M (170:) s
+35.4 148 M
+(                         data.graphtype,) s
+14.4 140 M (171:) s
+35.4 140 M
+(                         data.sFilename,) s
+14.4 132 M (172:) s
+35.4 132 M
+(                         data.nvertex,) s
+14.4 124 M (173:) s
+35.4 124 M
+(                         data.nedges,) s
+14.4 116 M (174:) s
+35.4 116 M
+(                         data.ncobertura,) s
+14.4 108 M (175:) s
+35.4 108 M
+(                         data.loadtime,) s
+14.4 100 M (176:) s
+35.4 100 M
+(                         data.processingtime \);) s
+14.4 92 M (177:) s
+14.4 84 M (178:) s
+35.4 84 M
+(                fflush\( stdout \);) s
+14.4 76 M (179:) s
+35.4 76 M
+(            } ) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+94.2 76 M
+(// end for ngrafos por seq) s
+/F-gs-font 7 7 SF
+14.4 68 M (180:) s
+/Courier-Oblique 7 7 SUF
+/F-gs-font 7 7 SF
+0 setgray
+35.4 68 M
+(        } ) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+77.4 68 M
+(// end for seqs) s
+/F-gs-font 7 7 SF
+14.4 60 M (181:) s
+/Courier-Oblique 7 7 SUF
+/F-gs-font 7 7 SF
+0 setgray
+14.4 52 M (182:) s
+35.4 52 M
+(        delete pGrafo;) s
+14.4 44 M (183:) s
+35.4 44 M
+(    } ) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+60.6 44 M
+(// end for algos) s
+/F-gs-font 7 7 SF
+14.4 36 M (184:) s
+/Courier-Oblique 7 7 SUF
+/F-gs-font 7 7 SF
+0 setgray
+35.4 36 M
+(}) s
+14.4 28 M (185:) s
+14.4 20 M (186:) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+35.4 20 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+48 20 M
+( ) s
+/Courier-Bold 7 7 SUF
+0 0 1 setrgbcolor
+52.2 20 M
+(main) s
+/F-gs-font 7 7 SF
+0 setgray
+69 20 M
+( \( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+81.6 20 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+94.2 20 M
+( argc, ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+123.6 20 M
+(char) s
+/F-gs-font 7 7 SF
+0 setgray
+140.4 20 M
+( ** argv \)) s
+14.4 12 M (187:) s
+35.4 12 M
+({) s
+14.4 4 M (188:) s
+35.4 4 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 4 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+60.6 4 M
+( \( argc < 2 \)) s
+_R
+S
+%%Page: (3) 3
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 3 def
+/fname (cobertura.cpp) def
+/fdir () def
+/ftail (cobertura.cpp) def
+% User defined strings:
+/pagenumstr (3) def
+/moddatestr (06/14/11) def
+/modtimestr (17:13:12) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+14.4 748 M (189:) s
+35.4 748 M
+(    {) s
+14.4 740 M (190:) s
+35.4 740 M
+(        fprintf\( stderr, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+140.4 740 M
+("Cobertura. Uso: %s \(benchmark|\(filename \([3|4|5]\)\)\) [debug]\\n") s
+/F-gs-font 7 7 SF
+0 setgray
+405 740 M
+(, argv[0] \);) s
+14.4 732 M (191:) s
+35.4 732 M
+(        exit\( 1 \);) s
+14.4 724 M (192:) s
+35.4 724 M
+(    }) s
+14.4 716 M (193:) s
+14.4 708 M (194:) s
+35.4 708 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 708 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+64.8 708 M
+( debug = 1;) s
+14.4 700 M (195:) s
+14.4 692 M (196:) s
+35.4 692 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 692 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+60.6 692 M
+( \( strcmp\( ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+106.8 692 M
+("benchmark") s
+/F-gs-font 7 7 SF
+0 setgray
+153 692 M
+(, argv[1] \) == 0 \)) s
+14.4 684 M (197:) s
+35.4 684 M
+(    {) s
+14.4 676 M (198:) s
+35.4 676 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+69 676 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+77.4 676 M
+( \( argc > 2 \)) s
+14.4 668 M (199:) s
+35.4 668 M
+(        {) s
+14.4 660 M (200:) s
+35.4 660 M
+(            debug = atoi\( argv[2] \);) s
+14.4 652 M (201:) s
+35.4 652 M
+(        }) s
+14.4 644 M (202:) s
+14.4 636 M (203:) s
+35.4 636 M
+(        Benchmark\( debug \);) s
+14.4 628 M (204:) s
+35.4 628 M
+(    }) s
+14.4 620 M (205:) s
+35.4 620 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 620 M
+(else) s
+/F-gs-font 7 7 SF
+0 setgray
+14.4 612 M (206:) s
+35.4 612 M
+(    {) s
+14.4 604 M (207:) s
+35.4 604 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+69 604 M
+(int) s
+/F-gs-font 7 7 SF
+0 setgray
+81.6 604 M
+( tarefa = atoi\( argv[2] \);) s
+14.4 596 M (208:) s
+14.4 588 M (209:) s
+35.4 588 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+69 588 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+77.4 588 M
+( \( argc > 3 \)) s
+14.4 580 M (210:) s
+35.4 580 M
+(        {) s
+14.4 572 M (211:) s
+35.4 572 M
+(            debug = atoi\( argv[3] \);) s
+14.4 564 M (212:) s
+35.4 564 M
+(        }) s
+14.4 556 M (213:) s
+14.4 548 M (214:) s
+35.4 548 M
+(        AdjacencyList * pGrafo = EscolhaGrafo\( tarefa \);) s
+14.4 540 M (215:) s
+14.4 532 M (216:) s
+35.4 532 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+69 532 M
+(char) s
+/F-gs-font 7 7 SF
+0 setgray
+85.8 532 M
+( * sFilename = argv[1];) s
+14.4 524 M (217:) s
+14.4 516 M (218:) s
+35.4 516 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+69 516 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+77.4 516 M
+( \( debug >= 1 \)) s
+14.4 508 M (219:) s
+35.4 508 M
+(        {) s
+14.4 500 M (220:) s
+35.4 500 M
+(            fprintf\( stderr, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+157.2 500 M
+("Lendo grafo %s:\\n") s
+/F-gs-font 7 7 SF
+0 setgray
+237 500 M
+(, sFilename \);) s
+14.4 492 M (221:) s
+35.4 492 M
+(        }) s
+14.4 484 M (222:) s
+14.4 476 M (223:) s
+35.4 476 M
+(        FILE * f = fopen\( sFilename, ) s
+/Courier-Bold 7 7 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+190.8 476 M
+("r") s
+/F-gs-font 7 7 SF
+0 setgray
+203.4 476 M
+( \);) s
+14.4 468 M (224:) s
+14.4 460 M (225:) s
+35.4 460 M
+(        pGrafo->read\( f, debug \);) s
+14.4 452 M (226:) s
+14.4 444 M (227:) s
+35.4 444 M
+(        fclose\( f \);) s
+14.4 436 M (228:) s
+14.4 428 M (229:) s
+35.4 428 M
+(        FacaTarefa\( pGrafo, debug \);) s
+14.4 420 M (230:) s
+14.4 412 M (231:) s
+35.4 412 M
+(        delete pGrafo;) s
+14.4 404 M (232:) s
+35.4 404 M
+(    }) s
+14.4 396 M (233:) s
+14.4 388 M (234:) s
+35.4 388 M
+(    ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+52.2 388 M
+(return) s
+/F-gs-font 7 7 SF
+0 setgray
+77.4 388 M
+( 0;) s
+14.4 380 M (235:) s
+35.4 380 M
+(}) s
+14.4 372 M (236:) s
+_R
+S
+%%Trailer
+%%Pages: 3
+%%DocumentNeededResources: font Times-Roman Courier-Oblique Courier-Bold 
+%%+ font Courier Times-Bold 
+%%EOF
