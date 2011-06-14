@@ -93,9 +93,11 @@ void Benchmark ( int debug )
 {
     struct BenchmarkData {
         char sFilename[ 256 ];
+        int graphtype;
         ltime loadtime, processingtime;
         int algorithm;
         int nvertex;
+        int nedges;
         int ncobertura;
     };
 
@@ -121,6 +123,7 @@ void Benchmark ( int debug )
                 }
 
                 data.algorithm = algo;
+                data.graphtype = c;
                 strcpy( data.sFilename, path );
 
                 FILE * f = fopen( path, "r" );
@@ -141,6 +144,7 @@ void Benchmark ( int debug )
 
                 data.loadtime = deltams;
                 data.nvertex = pGrafo->GetSize( );
+                data.nedges = pGrafo->GetEdges( );
 
                 deltams = getMilliCount( );
 
@@ -161,10 +165,12 @@ void Benchmark ( int debug )
                 data.ncobertura = listaDaCobertura.size();
                 data.processingtime = deltams;
 
-                fprintf( stdout, "%d,%s,%d,%d,%lu,%lu\n",
+                fprintf( stdout, "%d,%d,%s,%d,%d,%d,%lu,%lu\n",
                          data.algorithm,
+                         data.graphtype,
                          data.sFilename,
                          data.nvertex,
+                         data.nedges,
                          data.ncobertura,
                          data.loadtime,
                          data.processingtime );

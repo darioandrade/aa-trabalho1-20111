@@ -37,16 +37,19 @@ int DegreeHeapAdjacencyList::RemoveHighestDegreeVertex( int debug )
 		node != NULL;
 		node = node->next())
     {
-        int iNeighbor = node->getContent();
+        int iNeighbor = node->getVertex();
 
         // update this vertex's neighbor's list that this vertex is being removed
         //m_arrAdjLists[ iNeighbor ]->erase( iHighestDegreeVertex );
 
-        // remove edge from this vertex
-        m_nEdges --;
+        if ( m_heap->HasVertex( iNeighbor ) )
+        {
+            // remove edge from this vertex
+            m_nEdges --;
 
-        // decrement degree from neighbor
-        m_heap->DecrementDegree( iNeighbor );        
+            // decrement degree from neighbor
+            m_heap->DecrementDegree( iNeighbor );
+        }
     }
     
     // remove edges to neighbors, and let the vertex linger

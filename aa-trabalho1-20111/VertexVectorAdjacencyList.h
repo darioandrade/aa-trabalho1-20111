@@ -13,9 +13,9 @@ public:
 
 protected:
     void Allocate( int nVertex );
-    void DecrementDegree( int iVertex, int iCurrentDegree );
+    void DecrementDegree( int iVertex );
     void RemoveFromVertexVector( int iVertex, int iDegree );
-    int GetHighestDegreeVertex( );
+    ListNode* GetHighestDegreeVertex( );
     void updateData( );
 
 private:

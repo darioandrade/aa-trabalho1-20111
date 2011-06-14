@@ -61,7 +61,7 @@ int List::removeFirst()
 
     ListNode * node = m_first;
 
-    int content = node->getContent();
+    int content = node->getVertex();
 
     m_first = m_first->next();
     m_first->setPrevious( NULL );
@@ -83,7 +83,7 @@ void List::erase(int content)
 
 	for(ListNode * node = m_first; node != NULL; node = node->next()) {
 
-		if(content == node->getContent()) {
+		if(content == node->getVertex()) {
 
 			// Primeiro da lista
 			if (node == m_first) {

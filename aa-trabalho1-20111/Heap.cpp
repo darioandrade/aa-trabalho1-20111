@@ -6,6 +6,7 @@ Heap::Heap(int nVertex)
 :
 	m_nVertex(nVertex),
 	m_heapVector(NULL),
+	m_indexerHeap(NULL),
 	m_nextAvailableSlot(0)
 {
 	allocate();
@@ -14,12 +15,17 @@ Heap::Heap(int nVertex)
 Heap::~Heap()
 {
 	delete m_heapVector;
+	delete m_indexerHeap;
 }
 
 void Heap::allocate()
 {
 	m_heapVector = new std::pair<int, int>[ m_nVertex ];
 	m_indexerHeap = new int[ m_nVertex ];
+	for (int i = 0; i < m_nVertex; i++)
+	{
+	    m_indexerHeap[i] = -1;
+	}
 }
 
  bool Heap::removeFromHeap(std::pair<int, int> & root)
@@ -36,6 +42,9 @@ void Heap::allocate()
         m_heapVector[m_nextAvailableSlot - 1].second = 0;
 		m_nextAvailableSlot--;
 
+		// remove vertex from heap's index
+		m_indexerHeap[root.first] = -1;
+
 		bubleDownElement(0);
 
 	} else {
@@ -46,6 +55,11 @@ void Heap::allocate()
 	return true;
 }
 
+bool Heap::HasVertex(int iVertex) const
+{
+    return m_indexerHeap[iVertex] != -1;
+}
+
 void Heap::insertOnHeap(int iVertex, int degree)
 {	
     m_heapVector[m_nextAvailableSlot].first = iVertex;
@@ -54,6 +68,9 @@ void Heap::insertOnHeap(int iVertex, int degree)
 	// Fill indexer vector
 	m_indexerHeap[iVertex] =  m_nextAvailableSlot;
 
+	// we may need to use our current status in bubbleUpElement,
+	// so we need to increment before calling the method below
+	// do not move position
 	m_nextAvailableSlot++;
 
 	bubleUpElement(m_nextAvailableSlot - 1);
