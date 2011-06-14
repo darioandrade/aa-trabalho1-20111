@@ -15,7 +15,7 @@ public:
 	List();
 	~List();
 
-	std::pair<ListNode *, ListNode *> insertAtEnd(int content);
+	ListNode* insertAtEnd(int content);
 
 	int insertAtFront(int content);
 
@@ -29,7 +29,7 @@ public:
 
 	void erase(int content);
 
-	void remove( ListNode* previous, ListNode* node );
+	void remove( ListNode* node );
 
 private:
     int m_numElems;
