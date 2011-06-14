@@ -14,22 +14,26 @@ List::~List()
 	// DOES NOTHING
 }
 
-int List::insertAtEnd(int content)
+std::pair<ListNode *, ListNode *> List::insertAtEnd(int content)
 {
     ListNode * node = new ListNode(content);
+	ListNode * previous = NULL;
 
     /* Primeiro elemento */
     if ((m_first == NULL) && (m_last == NULL)) {
         m_first = node;
         m_last = node;
     } else {
+		previous = m_last;
         m_last->setNext(node);
         m_last = node;
     }
-	
-    m_numElems++;
 
-    return 0;
+	fprintf(stderr, "pre insertAtEnd %d\n", m_numElems );
+    m_numElems++;
+	fprintf(stderr, "pos insertAtEnd %d\n", m_numElems );
+
+    return std::pair<ListNode*, ListNode*>(previous, node);
 }
 
 int List::insertAtFront(int content)
@@ -46,7 +50,9 @@ int List::insertAtFront(int content)
         m_first = node;
     }
 
+    fprintf(stderr, "pre insertAtFront %d\n", m_numElems );
     m_numElems++;
+	fprintf(stderr, "pos insertAtFront %d\n", m_numElems );
 
     return 0;
 }
@@ -65,7 +71,9 @@ int List::removeFirst()
 
     delete node;
 
+	fprintf(stderr, "pre removeFirst %d\n", m_numElems );
     m_numElems--;
+	fprintf(stderr, "pos removeFirst %d\n", m_numElems );
 
     return content;
 }
@@ -98,8 +106,11 @@ void List::erase(int content)
 					m_last = previous;
 				}
 			}
-			
-			m_numElems--;
+
+
+				fprintf(stderr, "pre erase %d\n", m_numElems );
+				m_numElems--;
+				fprintf(stderr, "pos erase %d\n", m_numElems );
 			delete node;
 			return;
 		}
@@ -108,3 +119,37 @@ void List::erase(int content)
 }
 
 
+void List::remove( ListNode* previous, ListNode* node )
+{
+	if (node == NULL)
+		return;
+	
+	// primeiro da lista
+	if (node == m_first)
+	{
+		if (m_numElems == 1)
+		{
+			m_first = NULL;
+			m_last = NULL;
+		}
+		else
+		{
+			m_first = node->next();
+		}
+	}
+	else
+	{
+		previous->setNext(node->next());
+
+		if (node == m_last)
+		{
+			m_last = previous;
+		}
+	}
+
+	fprintf(stderr, "pre remove %d\n", m_numElems );
+	m_numElems--;
+	fprintf(stderr, "pos remove %d\n", m_numElems );
+
+	delete node;
+}

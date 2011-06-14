@@ -2,7 +2,6 @@
 #define VERTEXVECTORADJACENCYLIST_H_
 
 #include "AdjacencyList.h"
-#include <set>
 
 class VertexVectorAdjacencyList : public AdjacencyList
 {
@@ -21,8 +20,10 @@ protected:
 
 private:
     
-    int                             m_lastHighestDegree;
+    int m_lastHighestDegree;
     List ** m_vectorVertex;
+	ListNode ** m_elementList;
+	ListNode ** m_previousElementList;
 };
 
 #endif /* DEGREEVECTORADJACENCYLIST_H_ */
