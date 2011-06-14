@@ -25,18 +25,19 @@ public:
 	virtual bool HasEdge( ) const;
     virtual int RemoveHighestDegreeVertex( int debug ) { return -1; }
 
-        int GetSize() const { return m_nVertex; }
+    int GetSize() const { return m_nVertex; }
+    int GetEdges() const { return m_nEdges; }
 
-		int GetDegree(int iVertex) { return (int)m_arrAdjLists[iVertex]->size(); }
+//	int GetDegree(int iVertex) { return (int)m_arrAdjLists[iVertex]->size(); }
 
 
 protected:
     AdjacencyList( );
 	virtual void Allocate( int nVertex );
-        virtual void updateData(){ }
+    virtual void updateData(){ }
         
 	int						m_nVertex;
-	List ** m_arrAdjLists;
+	List **                 m_arrAdjLists;
 
 	int                     m_nEdges;
 };

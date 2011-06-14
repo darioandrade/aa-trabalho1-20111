@@ -75,7 +75,7 @@ void AdjacencyList::write ( FILE * f )
         // iterate through edges
         for (ListNode * node = m_arrAdjLists[i]->getFirst(); node != NULL ; node = node->next())
         {
-            fprintf( f, "%d ", node->getContent() );
+            fprintf( f, "%d ", node->getVertex() );
         }
 
         fputs( "\n", f );

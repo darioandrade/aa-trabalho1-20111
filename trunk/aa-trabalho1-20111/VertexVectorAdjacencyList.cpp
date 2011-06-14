@@ -11,7 +11,13 @@ VertexVectorAdjacencyList::VertexVectorAdjacencyList ( )
 
 VertexVectorAdjacencyList::~VertexVectorAdjacencyList ( )
 {
+    delete m_elementList;
 
+    for(int i = 0; i <  m_nVertex - 1; i++) {
+        delete m_vectorVertex[i];
+    }
+
+    delete m_vectorVertex;
 }
 
 void VertexVectorAdjacencyList::Allocate( int nVertex )
@@ -35,16 +41,20 @@ void VertexVectorAdjacencyList::Allocate( int nVertex )
 
 }
 
-void VertexVectorAdjacencyList::DecrementDegree( int iVertex, int iCurrentDegree )
+void VertexVectorAdjacencyList::DecrementDegree( int iVertex )
 {
 	// remove da lista atual e ..
-	ListNode* element  = m_elementList[ iVertex ];    
-    m_vectorVertex[ iCurrentDegree ]->remove( element );
+	ListNode* element  = m_elementList[ iVertex ];
+	int degree = element->getDegree();
+
+    m_vectorVertex[ degree ]->remove( element );
 
 	// insere na lista respectiva ao grau-1
-	ListNode* node = m_vectorVertex[ iCurrentDegree - 1 ]->insertAtEnd( iVertex );
-	m_elementList[ iVertex ] = node;
+	ListNode* node = m_vectorVertex[ degree - 1 ]->insertAtEnd( iVertex );
 
+	node->setDegree( degree - 1 );
+
+    m_elementList[ iVertex ] = node;
 }
 
 void VertexVectorAdjacencyList::RemoveFromVertexVector( int iVertex, int iDegree )
@@ -57,7 +67,8 @@ void VertexVectorAdjacencyList::RemoveFromVertexVector( int iVertex, int iDegree
 
 int VertexVectorAdjacencyList::RemoveHighestDegreeVertex( int debug )
 {
-    int iHighestDegreeVertex = GetHighestDegreeVertex();
+    ListNode * highestDegreeVertex = GetHighestDegreeVertex();
+    int iHighestDegreeVertex = highestDegreeVertex->getVertex();
     List * neighbors = m_arrAdjLists[ iHighestDegreeVertex ];
     
     if ( debug >= 2 )
@@ -71,22 +82,28 @@ int VertexVectorAdjacencyList::RemoveHighestDegreeVertex( int debug )
             node != NULL;
             node = node->next())
     {
-        int iNeighbor = node->getContent();
-        int iCurrentDegree = (int) m_arrAdjLists[ iNeighbor ]->size();
+        int iNeighbor = node->getVertex();
+        //int iCurrentDegree = (int) m_arrAdjLists[ iNeighbor ]->size();
 
         // update this vertex's neighbor's list that this vertex is being removed
-        m_arrAdjLists[ iNeighbor ]->erase( iHighestDegreeVertex );
+        //m_arrAdjLists[ iNeighbor ]->erase( iHighestDegreeVertex );
         
-        // remove edge from this vertex
-        m_nEdges --;
+        // if the neighbor is still in vertex vector, it means it has not been removed
+        // note: it may be on my neighbor's list, but already processed and removed, we need
+        // to make sure we will be decrementing a degree from a neighbor that's already in the graph
+        if ( m_elementList[ iNeighbor ] != NULL )
+        {
+            // remove edge from this vertex
+            m_nEdges --;
 
-        // decrement degree from neighbor
-        DecrementDegree( iNeighbor, iCurrentDegree );        
+            // decrement degree from neighbor
+            DecrementDegree( iNeighbor );//, iCurrentDegree );
+        }
     }
 
 
     // reset degree
-    RemoveFromVertexVector( iHighestDegreeVertex, neighbors->size() );
+    RemoveFromVertexVector( iHighestDegreeVertex, highestDegreeVertex->getDegree() );//neighbors->size() );
     
     // remove edges to neighbors, and let the vertex linger and ...
     //neighbors.clear( );
@@ -94,26 +111,29 @@ int VertexVectorAdjacencyList::RemoveHighestDegreeVertex( int debug )
     return iHighestDegreeVertex;
 }
 
-int VertexVectorAdjacencyList::GetHighestDegreeVertex( )
+ListNode* VertexVectorAdjacencyList::GetHighestDegreeVertex( )
 {
     for(int i = m_lastHighestDegree; i >= 0; i--)
     {
         if(m_vectorVertex[i]->size() != 0)
         {
             m_lastHighestDegree = i;
-            return (m_vectorVertex[i]->getFirst())->getContent();
+            return m_vectorVertex[i]->getFirst();//)->getVertex();
         }
     }
     
-    return -1;
+    return NULL;
 }
 
 void VertexVectorAdjacencyList::updateData()
 {
     for( int i = 0; i < m_nVertex; i++ )
     {
+        int degree = m_arrAdjLists[i]->size();
+
         // the vertex degree is its position in the vector
-        ListNode* node = m_vectorVertex[ m_arrAdjLists[i]->size() ]->insertAtEnd( i );
+        ListNode* node = m_vectorVertex[ degree ]->insertAtEnd( i );
+        node->setDegree( degree );
 
 		m_elementList[i] = node;
     }

@@ -13,7 +13,9 @@ public:
 	void insertOnHeap(int iVertex, int degree);
 	bool removeFromHeap(std::pair<int, int> & highestPair);
 
-    void DecrementDegree( int iVertex );      
+    void DecrementDegree( int iVertex );
+
+    bool HasVertex(int iVertex) const;
         
 	void print();
 private:

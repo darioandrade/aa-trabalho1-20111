@@ -9,13 +9,13 @@
 
 AlgoritmoCoberturaGulosa::AlgoritmoCoberturaGulosa ( )
 {
-    // TODO Auto-generated constructor stub
+
 
 }
 
 AlgoritmoCoberturaGulosa::~AlgoritmoCoberturaGulosa ( )
 {
-    // TODO Auto-generated destructor stub
+
 }
 
 void AlgoritmoCoberturaGulosa::CalculateCobertura(std::list< int > & listCobertura, AdjacencyList & grafo, int debug )
