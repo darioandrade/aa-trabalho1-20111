@@ -4,9 +4,6 @@
 
 #include "GeraGrafo.h"
 
-#define NSEQS                   2
-#define NGRAFOS_POR_SEQ         10
-
 void imprimeErro ( char* exename )
 {
     printf( "Gerador de grafos. Uso: %s [nvertex tipo(0|1) [debuglevel(0-2)]]\n", exename );

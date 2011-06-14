@@ -57,7 +57,7 @@ int VertexVectorAdjacencyList::RemoveHighestDegreeVertex( int debug )
         int iCurrentDegree = (int) m_arrAdjLists[ iNeighbor ]->size();
 
         // update this vertex's neighbor's list that this vertex is being removed
-        m_arrAdjLists[ iNeighbor ]->erase( iHighestDegreeVertex );
+        //m_arrAdjLists[ iNeighbor ]->erase( iHighestDegreeVertex );
 
         // remove edge from this vertex
         m_nEdges --;
