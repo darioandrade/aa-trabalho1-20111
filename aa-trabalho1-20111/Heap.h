@@ -18,7 +18,6 @@ public:
 	void print();
 private:
 	void allocate();
-	void balanceHeap();
 	bool swapWithFather(int iSlotIndex);
 	void bubleUpElement(int iSlotIndex);
 	void bubleDownElement(int iSlotIndex);
