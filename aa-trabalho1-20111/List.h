@@ -1,6 +1,7 @@
 #ifndef LIST_H
 #define LIST_H
 
+#include <utility>
 #include "ListNode.h"
 /************************************************************************/
 /*                                                                      */
@@ -14,7 +15,7 @@ public:
 	List();
 	~List();
 
-	int insertAtEnd(int content);
+	std::pair<ListNode *, ListNode *> insertAtEnd(int content);
 
 	int insertAtFront(int content);
 
@@ -27,6 +28,8 @@ public:
 	ListNode * getLast() { return m_last; }
 
 	void erase(int content);
+
+	void remove( ListNode* previous, ListNode* node );
 
 private:
     int m_numElems;
