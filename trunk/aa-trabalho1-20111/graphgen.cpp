@@ -3,6 +3,7 @@
 #include <math.h>
 
 #include "GeraGrafo.h"
+#include <math.h>
 
 void imprimeErro ( char* exename )
 {
@@ -29,7 +30,7 @@ int main ( int argc, char ** argv )
 
                 FILE * f = fopen( path , "w" );
 
-                int n = 10 * ( ( int ) pow( 2, i ) );
+                int n = 10 * ( ( int ) pow( 2.0f, i ) );
 
                 // gera grafo com debug = 1 (so para dizer o que esta fazendo, nao depurar)
                 GeraGrafo( f, n, c, 1 );

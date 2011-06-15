@@ -205,7 +205,6 @@ int main ( int argc, char ** argv )
     else
     {
         int tarefa = atoi( argv[2] );
-
         if ( argc > 3 )
         {
             debug = atoi( argv[3] );
@@ -221,7 +220,6 @@ int main ( int argc, char ** argv )
         }
 
         FILE * f = fopen( sFilename, "r" );
-
         pGrafo->read( f, debug );
 
         fclose( f );

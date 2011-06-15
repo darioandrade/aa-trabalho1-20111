@@ -11,7 +11,14 @@ List::List()
 
 List::~List()
 {
-	// DOES NOTHING
+	ListNode* node = m_first;
+	ListNode* next = NULL;
+	while (node != NULL)
+	{
+		next = node->next();
+		delete node;
+		node = next;
+	}
 }
 
 ListNode* List::insertAtEnd(int content)
