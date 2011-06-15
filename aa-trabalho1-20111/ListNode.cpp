@@ -14,7 +14,6 @@ ListNode::ListNode(int content)
 
 ListNode::~ListNode()
 {
-	
 }
 
 

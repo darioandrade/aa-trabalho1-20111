@@ -24,7 +24,7 @@ void GeraGrafo ( FILE* f, int nVertex, int type, int debug )
     srand( time( NULL ) );
 
     // calculando p
-    double p = ( type == 0 ) ? P_TIPO_0 : ( 1.0 / ( 2.0 * sqrt( nVertex ) ) );
+    double p = ( type == 0 ) ? P_TIPO_0 : ( 1.0 / ( 2.0 * sqrt( (float)nVertex ) ) );
 
     if ( debug > 0 )
     {
